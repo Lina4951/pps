@@ -14,8 +14,8 @@
     * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none; }
     :root {
       --bg: #5B0E8A; --bg-light: #7B2DBA; --bg-dark: #3D0660; --orange: #FF8C00; --orange-light: #FFA940;
-      --card: rgba(255, 255, 255, 0.08); --card-border: rgba(255, 140, 0, 0.3); --text: #FF8C00;
-      --text-light: #FFB366; --white: #FFFFFF; --danger: #FF4444; --success: #4CAF50; --blue: #42A5F5; --yellow: #FFC107;
+      --card: rgba(255, 255, 255, 0.08); --card-border: rgba(255, 140, 0, 0.3);
+      --white: #FFFFFF; --danger: #FF4444; --success: #4CAF50; --yellow: #FFC107;
       --font-size: 14px; --font-size-sm: 12px; --font-size-lg: 16px;
     }
     body.dark-theme { --bg: #1a0030; --bg-light: #2d0050; --bg-dark: #0d0018; --card: rgba(255, 255, 255, 0.05); --card-border: rgba(255, 140, 0, 0.2); }
@@ -27,150 +27,104 @@
     @keyframes splashPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
     .password-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, var(--bg) 0%, var(--bg-dark) 100%); display: flex; align-items: center; justify-content: center; z-index: 9998; flex-direction: column; gap: 20px; padding: 30px; transition: opacity 0.5s, visibility 0.5s; }
     .password-screen.hidden { opacity: 0; visibility: hidden; }
-    .password-screen .lock-icon { font-size: 60px; margin-bottom: 10px; }
+    .password-screen .lock-icon { font-size: 60px; }
     .password-screen h2 { color: var(--orange); font-size: 20px; }
     .password-screen input { width: 100%; max-width: 280px; padding: 14px 18px; border-radius: 16px; border: 2px solid var(--orange); background: rgba(255, 255, 255, 0.1); color: var(--white); font-size: 18px; text-align: center; letter-spacing: 6px; outline: none; -webkit-text-security: disc; }
     .password-screen .btn { padding: 14px 40px; border-radius: 16px; background: var(--orange); color: var(--white); border: none; font-weight: 700; font-size: 16px; cursor: pointer; }
-    .password-screen .error { color: var(--danger); font-size: var(--font-size-sm); min-height: 18px; }
-    .password-screen .hint { color: rgba(255,255,255,0.5); font-size: var(--font-size-sm); }
     .header { padding: 14px 20px 10px; text-align: center; position: sticky; top: 0; z-index: 100; background: linear-gradient(180deg, var(--bg) 0%, rgba(91, 14, 138, 0.95) 100%); backdrop-filter: blur(10px); }
     .header-row { display: flex; align-items: center; justify-content: space-between; }
     .header .logo { display: flex; align-items: center; gap: 8px; cursor: pointer; }
     .header .icon-app { width: 38px; height: 38px; background: var(--orange); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; color: var(--bg-dark); box-shadow: 0 4px 15px rgba(255, 140, 0, 0.4); }
     .header h1 { font-size: 18px; font-weight: 700; color: var(--orange); }
-    .header-actions { display: flex; gap: 6px; }
     .icon-btn { width: 36px; height: 36px; border-radius: 12px; background: rgba(255,255,255,0.1); border: none; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--white); transition: all 0.2s; }
-    .icon-btn:active { background: rgba(255,140,0,0.3); transform: scale(0.9); }
-    .main { flex: 1; padding: 6px 14px 100px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
-    .install-banner { background: rgba(255, 140, 0, 0.2); border: 2px solid var(--orange); border-radius: 16px; padding: 12px 16px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; gap: 10px; animation: slideDown 0.4s ease; }
-    @keyframes slideDown { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-    .install-banner .install-text { font-size: var(--font-size-sm); font-weight: 600; color: var(--white); }
-    .install-banner .install-btn { background: var(--orange); color: var(--white); border: none; padding: 10px 16px; border-radius: 12px; font-weight: 700; font-size: var(--font-size-sm); cursor: pointer; }
-    .card { background: var(--card); border: 1.5px solid var(--card-border); border-radius: 20px; padding: 16px 14px; margin-bottom: 10px; cursor: pointer; transition: all 0.2s; backdrop-filter: blur(5px); animation: fadeInUp 0.4s ease; }
-    @keyframes fadeInUp { from { transform: translateY(15px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-    .card:active { transform: scale(0.97); background: rgba(255, 255, 255, 0.15); }
-    .card .card-icon { font-size: 28px; margin-bottom: 4px; }
-    .card .card-title { font-size: var(--font-size-lg); font-weight: 600; color: var(--orange); }
-    .card .card-desc { font-size: var(--font-size-sm); color: var(--text-light); margin-top: 2px; }
-    .section-title { font-size: var(--font-size-sm); font-weight: 700; color: var(--orange-light); text-transform: uppercase; letter-spacing: 2px; margin: 18px 0 8px; padding-left: 4px; display: flex; align-items: center; justify-content: space-between; }
-    .section-title .sort-btn { font-size: 11px; background: rgba(255,140,0,0.2); border: none; color: var(--orange-light); padding: 4px 10px; border-radius: 8px; cursor: pointer; text-transform: none; letter-spacing: 0; }
-    .voice-search { background: var(--card); border: 2px solid var(--orange); border-radius: 20px; padding: 14px; text-align: center; margin-bottom: 14px; }
-    .voice-btn { width: 64px; height: 64px; border-radius: 50%; background: var(--orange); border: none; font-size: 28px; cursor: pointer; transition: all 0.2s; box-shadow: 0 6px 25px rgba(255, 140, 0, 0.5); color: white; }
-    .voice-btn:active { transform: scale(0.9); }
-    .voice-btn.listening { animation: pulse 1.2s infinite; background: var(--danger); box-shadow: 0 0 40px rgba(255, 68, 68, 0.8); }
-    @keyframes pulse { 0%, 100% { box-shadow: 0 0 20px rgba(255, 68, 68, 0.6); } 50% { box-shadow: 0 0 50px rgba(255, 68, 68, 1); } }
-    .voice-result { margin-top: 8px; font-size: var(--font-size); color: var(--white); min-height: 18px; }
-    .search-box { display: flex; gap: 8px; margin-bottom: 10px; }
-    .search-box input { flex: 1; padding: 12px 14px; border-radius: 14px; border: 2px solid var(--orange); background: rgba(255, 255, 255, 0.1); color: var(--white); font-size: var(--font-size); outline: none; }
-    .search-box input::placeholder { color: rgba(255, 255, 255, 0.5); }
-    .search-box .btn { padding: 12px 16px; border-radius: 14px; background: var(--orange); color: var(--white); border: none; font-weight: 700; font-size: var(--font-size); cursor: pointer; }
-    .folder-list { display: flex; flex-direction: column; gap: 6px; }
-    .folder-item { background: var(--card); border: 1.5px solid var(--card-border); border-radius: 16px; padding: 12px 14px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: all 0.2s; backdrop-filter: blur(5px); position: relative; overflow: hidden; animation: fadeInUp 0.3s ease; }
-    .folder-item:active { background: rgba(255, 255, 255, 0.15); }
-    .folder-item.pinned { border-color: var(--yellow); box-shadow: 0 0 10px rgba(255, 193, 7, 0.2); }
-    .folder-item.secret { border-color: var(--danger); box-shadow: 0 0 10px rgba(255, 68, 68, 0.2); }
-    .folder-item .pin-indicator { position: absolute; top: 6px; right: 8px; font-size: 12px; color: var(--yellow); }
-    .folder-item .secret-indicator { position: absolute; top: 6px; right: 24px; font-size: 12px; }
-    .folder-item .folder-icon { font-size: 28px; flex-shrink: 0; }
-    .folder-item .folder-info { flex: 1; min-width: 0; }
-    .folder-item .folder-name { font-weight: 600; color: var(--orange); font-size: var(--font-size); }
-    .folder-item .folder-meta { font-size: 11px; color: var(--text-light); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-    .folder-item .folder-count { font-size: 11px; color: var(--text-light); }
-    .folder-item .color-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
-    .color-dot.red { background: #FF4444; } .color-dot.yellow { background: #FFC107; } .color-dot.green { background: #4CAF50; } .color-dot.blue { background: #42A5F5; } .color-dot.none { background: transparent; border: 1px solid rgba(255,255,255,0.3); }
-    .subfolder-item { background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,140,0,0.2); border-radius: 12px; padding: 10px 12px; margin-left: 20px; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: var(--font-size-sm); color: var(--text-light); }
-    .subfolder-item:active { background: rgba(255,255,255,0.08); }
-    .add-folder-btn { background: rgba(255, 140, 0, 0.15); border: 2px dashed var(--orange); border-radius: 14px; padding: 12px; text-align: center; color: var(--orange); font-weight: 600; cursor: pointer; transition: 0.2s; font-size: var(--font-size); margin-top: 6px; }
-    .add-folder-btn:active { background: rgba(255, 140, 0, 0.25); }
-    .context-menu { position: fixed; background: var(--bg-light); border: 2px solid var(--orange); border-radius: 16px; padding: 6px; z-index: 300; min-width: 180px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); animation: fadeInUp 0.2s ease; }
-    .context-menu button { display: block; width: 100%; padding: 10px 14px; border: none; background: none; color: var(--white); font-size: var(--font-size); text-align: left; cursor: pointer; border-radius: 10px; transition: 0.2s; }
-    .context-menu button:active { background: rgba(255,140,0,0.2); }
-    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 20px; }
-    .modal { background: var(--bg-light); border-radius: 24px; padding: 22px 18px; width: 100%; max-width: 360px; border: 2px solid var(--orange); animation: fadeInUp 0.3s ease; max-height: 85vh; overflow-y: auto; }
-    .modal h2 { color: var(--orange); margin-bottom: 14px; text-align: center; font-size: 17px; }
-    .modal input, .modal select, .modal textarea { width: 100%; padding: 12px; border-radius: 14px; border: 2px solid var(--orange); background: rgba(255, 255, 255, 0.1); color: var(--white); font-size: var(--font-size); outline: none; margin-bottom: 10px; }
-    .modal select option { background: var(--bg-dark); color: var(--white); }
-    .modal textarea { resize: vertical; }
-    .modal .btn-row { display: flex; gap: 8px; flex-wrap: wrap; }
-    .modal .btn { flex: 1; padding: 12px; border-radius: 14px; font-weight: 700; font-size: var(--font-size); cursor: pointer; border: none; min-width: 80px; }
-    .btn-primary { background: var(--orange); color: var(--white); }
-    .btn-secondary { background: rgba(255, 255, 255, 0.15); color: var(--white); }
-    .btn-danger { background: var(--danger); color: var(--white); }
-    .color-options { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
-    .color-option { width: 32px; height: 32px; border-radius: 50%; cursor: pointer; border: 2px solid transparent; transition: 0.2s; }
-    .color-option.selected { border-color: var(--white); box-shadow: 0 0 10px currentColor; }
-    .color-option.red { background: #FF4444; } .color-option.yellow { background: #FFC107; } .color-option.green { background: #4CAF50; } .color-option.blue { background: #42A5F5; } .color-option.none { background: transparent; border: 2px dashed rgba(255,255,255,0.4); }
-    .preview-img { width: 100%; border-radius: 14px; margin: 8px 0; border: 2px solid var(--orange); }
-    .result-text { background: rgba(0, 0, 0, 0.3); border-radius: 14px; padding: 12px; margin-top: 8px; font-size: var(--font-size-sm); line-height: 1.5; white-space: pre-wrap; max-height: 250px; overflow-y: auto; color: var(--white); border: 1px solid var(--card-border); }
+    .main { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 8px 14px 100px; }
+    .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 430px; background: rgba(61, 6, 96, 0.95); backdrop-filter: blur(20px); display: flex; justify-content: space-around; padding: 6px 4px 18px; border-top: 2px solid var(--orange); z-index: 150; border-radius: 22px 22px 0 0; }
+    .nav-item { display: flex; flex-direction: column; align-items: center; gap: 1px; cursor: pointer; padding: 4px 8px; border-radius: 10px; transition: 0.2s; border: none; background: none; color: rgba(255, 255, 255, 0.5); font-size: 10px; font-weight: 500; }
+    .nav-item.active { color: var(--orange); background: rgba(255, 140, 0, 0.15); }
+    .nav-item .nav-icon { font-size: 20px; }
+    .page { display: none; }
+    .page.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .card { background: var(--card); border: 1.5px solid var(--card-border); border-radius: 20px; padding: 16px 14px; margin-bottom: 10px; cursor: pointer; transition: all 0.2s; backdrop-filter: blur(5px); }
+    .card-title { font-size: var(--font-size-lg); font-weight: 600; color: var(--orange); }
+    .card-desc { font-size: var(--font-size-sm); color: rgba(255,255,255,0.7); margin-top: 2px; }
+    .section-title { font-size: var(--font-size-sm); font-weight: 700; color: var(--orange-light); text-transform: uppercase; letter-spacing: 2px; margin: 16px 0 8px; }
+    .btn { padding: 12px 20px; border-radius: 16px; background: var(--orange); color: var(--white); border: none; font-weight: 700; font-size: var(--font-size); cursor: pointer; width: 100%; }
     .btn-sm { padding: 8px 14px; border-radius: 10px; background: var(--orange); color: var(--white); border: none; font-weight: 600; cursor: pointer; font-size: var(--font-size-sm); }
-    .btn-xs { padding: 4px 8px; border-radius: 6px; background: rgba(255,255,255,0.15); color: var(--white); border: none; font-weight: 500; cursor: pointer; font-size: 10px; }
-    .carousel { display: flex; overflow-x: auto; gap: 8px; padding: 4px 0; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+    .toast { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%); background: var(--orange); color: var(--white); padding: 10px 20px; border-radius: 20px; font-size: var(--font-size-sm); font-weight: 600; z-index: 500; animation: fadeIn 0.3s ease; }
+    .hidden { display: none !important; }
+    .mt-2 { margin-top: 8px; } .text-center { text-align: center; } .text-light { color: rgba(255,255,255,0.6); font-size: var(--font-size-sm); }
+    input, textarea { padding: 10px; border-radius: 12px; border: 2px solid var(--orange); background: rgba(255,255,255,0.1); color: var(--white); font-size: var(--font-size); width: 100%; margin-bottom: 8px; }
+    .folder-list { display: flex; flex-direction: column; gap: 6px; }
+    .folder-item { background: var(--card); border: 1.5px solid var(--card-border); border-radius: 16px; padding: 12px 14px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden; }
+    .folder-item.pinned { border-color: var(--yellow); box-shadow: 0 0 10px rgba(255,193,7,0.2); }
+    .folder-item .pin-indicator { position: absolute; top: 6px; right: 8px; font-size: 12px; color: var(--yellow); }
+    .folder-item .folder-icon { font-size: 28px; flex-shrink: 0; }
+    .folder-item .folder-name { font-weight: 600; color: var(--orange); font-size: var(--font-size); }
+    .folder-item .folder-meta { font-size: 11px; color: rgba(255,255,255,0.6); display: flex; gap: 8px; align-items: center; }
+    .add-folder-btn { background: rgba(255, 140, 0, 0.15); border: 2px dashed var(--orange); border-radius: 14px; padding: 12px; text-align: center; color: var(--orange); font-weight: 600; cursor: pointer; font-size: var(--font-size); margin-top: 6px; }
+    .search-box { display: flex; gap: 8px; margin-bottom: 10px; }
+    .search-box input { flex: 1; }
+    .voice-btn { width: 64px; height: 64px; border-radius: 50%; background: var(--orange); border: none; font-size: 28px; cursor: pointer; box-shadow: 0 6px 25px rgba(255, 140, 0, 0.5); color: white; }
+    .voice-btn.listening { animation: pulse 1.2s infinite; background: var(--danger); }
+    @keyframes pulse { 0%, 100% { box-shadow: 0 0 20px rgba(255,68,68,0.6); } 50% { box-shadow: 0 0 50px rgba(255,68,68,1); } }
+    .result-text { background: rgba(0, 0, 0, 0.3); border-radius: 14px; padding: 12px; margin-top: 8px; font-size: var(--font-size-sm); line-height: 1.5; white-space: pre-wrap; max-height: 250px; overflow-y: auto; border: 1px solid var(--card-border); }
+    .carousel { display: flex; overflow-x: auto; gap: 8px; padding: 4px 0; scroll-snap-type: x mandatory; }
     .carousel img { width: 140px; height: 200px; object-fit: cover; border-radius: 14px; border: 2px solid var(--orange); scroll-snap-align: start; flex-shrink: 0; cursor: pointer; }
+    .preview-img { width: 100%; border-radius: 14px; margin: 8px 0; border: 2px solid var(--orange); }
     .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 400; display: flex; align-items: center; justify-content: center; flex-direction: column; }
-    .lightbox img { max-width: 95%; max-height: 80%; border-radius: 12px; transition: transform 0.3s; }
-    .lightbox .close-lightbox { position: absolute; top: 20px; right: 20px; font-size: 30px; color: white; cursor: pointer; z-index: 401; width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: none; }
-    .lightbox .draw-controls { position: absolute; bottom: 30px; display: flex; gap: 8px; z-index: 402; flex-wrap: wrap; justify-content: center; padding: 0 20px; }
+    .lightbox img { max-width: 95%; max-height: 80%; border-radius: 12px; }
+    .lightbox .close-lightbox { position: absolute; top: 20px; right: 20px; font-size: 30px; color: white; cursor: pointer; width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: none; }
+    .lightbox .draw-controls { position: absolute; bottom: 30px; display: flex; gap: 8px; z-index: 402; }
     .lightbox .draw-btn { padding: 8px 12px; border-radius: 20px; background: rgba(255,255,255,0.2); color: white; border: none; cursor: pointer; font-size: 14px; }
     .lightbox .draw-btn.active { background: var(--orange); }
     .lightbox canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 400; pointer-events: none; }
     .lightbox canvas.active { pointer-events: auto; }
-    .bottom-nav { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 430px; background: rgba(61, 6, 96, 0.95); backdrop-filter: blur(20px); display: flex; justify-content: space-around; padding: 6px 4px 18px; border-top: 2px solid var(--orange); z-index: 150; border-radius: 22px 22px 0 0; }
-    .nav-item { display: flex; flex-direction: column; align-items: center; gap: 1px; cursor: pointer; padding: 4px 8px; border-radius: 10px; transition: 0.2s; border: none; background: none; color: rgba(255, 255, 255, 0.5); font-size: 10px; font-weight: 500; position: relative; }
-    .nav-item.active { color: var(--orange); background: rgba(255, 140, 0, 0.15); }
-    .nav-item .nav-icon { font-size: 20px; }
-    .nav-badge { position: absolute; top: -2px; right: 2px; background: var(--danger); color: white; font-size: 8px; width: 14px; height: 14px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-    .page { display: none; }
-    .page.active { display: block; animation: fadeInUp 0.3s ease; }
-    ::-webkit-scrollbar { width: 3px; height: 3px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 2px; }
-    .text-center { text-align: center; } .mt-2 { margin-top: 8px; } .mb-2 { margin-bottom: 8px; } .hidden { display: none !important; }
+    .color-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .color-dot.red { background: #FF4444; } .color-dot.yellow { background: #FFC107; } .color-dot.green { background: #4CAF50; } .color-dot.blue { background: #42A5F5; }
+    .color-dot.none { background: transparent; border: 1px solid rgba(255,255,255,0.3); }
+    .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 20px; }
+    .modal { background: var(--bg-light); border-radius: 24px; padding: 22px 18px; width: 100%; max-width: 360px; border: 2px solid var(--orange); }
+    .modal h2 { color: var(--orange); margin-bottom: 14px; text-align: center; }
+    .modal input { width: 100%; padding: 12px; border-radius: 14px; border: 2px solid var(--orange); background: rgba(255,255,255,0.1); color: var(--white); font-size: var(--font-size); outline: none; margin-bottom: 10px; }
+    .modal .btn-row { display: flex; gap: 8px; }
+    .modal .btn { flex: 1; padding: 12px; border-radius: 14px; font-weight: 700; font-size: var(--font-size); cursor: pointer; border: none; }
+    .btn-primary { background: var(--orange); color: var(--white); }
+    .btn-secondary { background: rgba(255, 255, 255, 0.15); color: var(--white); }
     .progress-bar { height: 4px; background: rgba(255, 255, 255, 0.2); border-radius: 2px; overflow: hidden; margin: 6px 0; }
     .progress-fill { height: 100%; background: var(--orange); border-radius: 2px; width: 0%; transition: width 0.3s; }
-    .toast { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%); background: var(--orange); color: var(--white); padding: 10px 20px; border-radius: 20px; font-size: var(--font-size-sm); font-weight: 600; z-index: 500; animation: fadeInUp 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-    .tag { display: inline-block; padding: 2px 8px; border-radius: 8px; font-size: 10px; margin: 1px; background: rgba(255,140,0,0.2); color: var(--orange-light); }
-    .reminder-badge { display: inline-block; padding: 2px 8px; border-radius: 8px; font-size: 10px; background: rgba(66,165,245,0.3); color: var(--blue); margin-left: 4px; }
-    .trash-item { opacity: 0.6; border-style: dashed; }
-    .note-text { font-size: 10px; color: rgba(255,255,255,0.6); font-style: italic; margin-top: 2px; }
-    input[type="color"] { -webkit-appearance: none; border: 2px solid var(--orange); border-radius: 10px; height: 40px; cursor: pointer; padding: 2px; }
-    .calendar-day { display: inline-block; width: 30px; height: 30px; line-height: 30px; text-align: center; border-radius: 8px; margin: 2px; font-size: 11px; cursor: pointer; background: rgba(255,255,255,0.1); }
-    .calendar-day.has-ops { background: var(--orange); color: var(--white); font-weight: 700; }
-    .calendar-day.today { border: 2px solid var(--white); }
-    .lang-flag { cursor: pointer; font-size: 18px; padding: 2px 6px; border-radius: 6px; }
-    .lang-flag.active { background: rgba(255,140,0,0.3); }
   </style>
 </head>
 <body>
 
 <div class="splash" id="splash"><div class="splash-logo">П</div></div>
-<div class="password-screen" id="passwordScreen">
+<div class="password-screen hidden" id="passwordScreen">
   <div class="lock-icon">🔐</div><h2>Гид по АИС ППС</h2>
   <input type="password" id="passwordInput" placeholder="Введите пароль" maxlength="20">
   <div class="error" id="passwordError"></div>
   <button class="btn" id="passwordSubmit">Войти</button>
-  <div class="hint" id="passwordHint"></div>
+  <div class="hint" id="passwordHint">Стандартный пароль: 1234</div>
 </div>
+<div class="toast hidden" id="toast"></div>
 <div class="lightbox hidden" id="lightbox">
   <button class="close-lightbox" id="closeLightbox">✕</button>
-  <img id="lightboxImg" src="" alt="скриншот">
+  <img id="lightboxImg" src="">
   <canvas id="lightboxCanvas" class="active"></canvas>
   <div class="draw-controls" id="drawControls">
     <button class="draw-btn active" data-tool="none">✋</button>
     <button class="draw-btn" data-tool="circle" style="color:red;">⭕</button>
     <button class="draw-btn" data-tool="arrow" style="color:yellow;">➡️</button>
-    <button class="draw-btn" data-tool="text" style="color:white;">🔤</button>
     <button class="draw-btn" id="clearDrawing" style="color:#FF4444;">🗑️</button>
     <button class="draw-btn" id="saveDrawing" style="color:#4CAF50;">💾</button>
   </div>
 </div>
-<div class="context-menu hidden" id="contextMenu"></div>
-<div class="toast hidden" id="toast"></div>
+<div class="modal-overlay hidden" id="modalOverlay"><div class="modal" id="modalContent"></div></div>
 
-<div class="app" id="app">
+<div class="app">
   <div class="header">
     <div class="header-row">
-      <div class="logo" onclick="navigateTo('home')"><div class="icon-app">П</div><h1 data-lang="appTitle">Гид по АИС ППС</h1></div>
+      <div class="logo" onclick="navigateTo('home')"><div class="icon-app">П</div><h1>Гид по АИС ППС</h1></div>
       <div class="header-actions">
-        <span class="lang-flag active" onclick="switchLang('ru')">🇷🇺</span>
-        <span class="lang-flag" onclick="switchLang('en')">🇬🇧</span>
         <button class="icon-btn" id="themeToggle" title="Тема">🌓</button>
         <button class="icon-btn" id="lockBtn" title="Заблокировать">🔒</button>
         <button class="icon-btn" id="settingsBtn" title="Настройки">⚙️</button>
@@ -179,544 +133,192 @@
   </div>
 
   <div class="main" id="mainContent">
-    <!-- HOME -->
+    <!-- ГЛАВНАЯ -->
     <div class="page active" id="page-home">
-      <div class="install-banner hidden" id="installBanner"><span class="install-text" data-lang="installPrompt">📱 Установите как приложение</span><button class="install-btn" id="installBtn" data-lang="installBtn">Установить</button></div>
-      <div id="reportCounter" class="card text-center" style="background:rgba(255,140,0,0.15);">
-        <div class="card-icon">📅</div>
-        <div class="card-title" data-lang="daysToReport">Дней до отчёта: <span id="daysCount">--</span></div>
-        <div class="card-desc" data-lang="nextReport">Следующий отчёт: <span id="nextReportDate">не задан</span></div>
-        <button class="btn-xs mt-2" id="setReportDateBtn" data-lang="setReportBtn">📅 Задать дату</button>
-      </div>
-      <div class="voice-search">
-        <button class="voice-btn" id="voiceBtn" title="Голосовой поиск">🎤</button>
-        <div class="voice-result" id="voiceResult" data-lang="voicePlaceholder">Нажмите и скажите, что найти...</div>
-      </div>
-      <div class="search-box">
-        <input type="text" id="searchInput" data-lang="searchPlaceholder" placeholder="Например: выписка, заявление...">
-        <button class="btn" id="searchBtn">🔍</button>
-      </div>
-      <div id="searchResultContainer" class="hidden">
-        <div class="section-title" style="justify-content:space-between;">
-          <span data-lang="searchResult">📌 Результат поиска</span>
-          <div>
-            <button class="sort-btn active" id="detailModeBtn" onclick="switchMode('detail')">📝</button>
-            <button class="sort-btn" id="shortModeBtn" onclick="switchMode('short')">⚡</button>
-          </div>
-        </div>
-        <div id="searchResult" class="result-text"></div>
-        <button class="btn-sm mt-2" id="copyInstructionBtn" style="display:none;" data-lang="copyInstr">📋 Копировать инструкцию</button>
-        <button class="btn-xs mt-2" id="favInstructionBtn" style="display:none;" data-lang="favInstr">⭐ В избранное</button>
-      </div>
-      <div class="section-title" data-lang="favInstrTitle">⭐ Избранные инструкции</div>
-      <div id="favInstructionsList" style="margin-bottom:8px;"></div>
-      <div class="section-title">
-        <span data-lang="folders">📂 Папки</span>
-        <button class="sort-btn" id="sortBtn">↓ По дате</button>
-      </div>
+      <div class="voice-search text-center" style="margin-bottom:14px;"><button class="voice-btn" id="voiceBtn">🎤</button><div class="text-light mt-2">Голосовой поиск</div></div>
+      <div class="search-box"><input type="text" id="searchInput" placeholder="Поиск инструкции..."><button class="btn" id="searchBtn" style="width:auto;">🔍</button></div>
+      <div id="searchResultContainer" class="hidden"><div class="section-title">📌 Результат</div><div id="searchResult" class="result-text"></div></div>
+      <div class="section-title">📂 Папки</div>
       <div class="folder-list" id="folderList"></div>
-      <div class="add-folder-btn" id="addFolderBtn" data-lang="addFolder">➕ Создать новую папку</div>
-      <div class="section-title" data-lang="data">💾 Данные</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;">
-        <button class="btn-sm" id="backupBtn" style="flex:1;" data-lang="backup">💾 Резервная копия</button>
-        <button class="btn-sm" id="restoreBtn" style="flex:1;" data-lang="restore">📥 Восстановить</button>
-        <button class="btn-sm" id="exportFolderBtn" style="flex:1;" data-lang="exportFolder">📤 Экспорт папки</button>
-        <button class="btn-sm" id="exportExcelBtn" style="flex:1;" data-lang="exportExcel">📊 В Excel</button>
-        <input type="file" id="restoreInput" accept=".json" class="hidden">
-      </div>
+      <div class="add-folder-btn" id="addFolderBtn">➕ Создать папку</div>
+      <div class="section-title">💾 Данные</div>
+      <button class="btn btn-sm mt-2" id="backupBtn">💾 Резервная копия</button>
+      <button class="btn btn-sm mt-2" id="restoreBtn">📥 Восстановить</button>
+      <input type="file" id="restoreInput" accept=".json" class="hidden">
     </div>
 
-    <!-- FOLDER -->
+    <!-- ПАПКА -->
     <div class="page" id="page-folder">
-      <button class="btn-sm mb-2" id="backFromFolder">← <span data-lang="back">Назад</span></button>
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:4px;">
-        <h2 class="section-title" id="folderTitle" style="margin:0;">📂 Папка</h2>
-        <div>
-          <button class="btn-xs" id="addSubfolderBtn">➕ <span data-lang="subfolder">Подпапка</span></button>
-          <button class="btn-xs" id="addNoteBtn">📝 <span data-lang="note">Заметка</span></button>
-        </div>
-      </div>
-      <div id="subfolderList" style="margin:8px 0;"></div>
+      <button class="btn-sm mb-2" id="backFromFolder">← Назад</button>
+      <h2 class="section-title" id="folderTitle">📂 Папка</h2>
       <div class="carousel" id="screenshotCarousel"></div>
-      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;">
-        <button class="btn-xs" id="addScreenshotBtn">➕ <span data-lang="addScreenshot">Скриншот</span></button>
-        <button class="btn-xs" id="cropModeBtn">✂️ <span data-lang="crop">Обрезать</span></button>
-        <button class="btn-xs" id="addTagBtn">🏷️ <span data-lang="tags">Теги</span></button>
-        <button class="btn-xs" id="addReminderBtn">🔔 <span data-lang="remind">Напомнить</span></button>
-      </div>
+      <button class="add-folder-btn mt-2" id="addScreenshotBtn">➕ Добавить скриншот</button>
       <input type="file" id="screenshotInput" accept="image/*" multiple class="hidden">
-      <div id="folderNotes" style="margin-top:8px;"></div>
     </div>
 
     <!-- OCR -->
     <div class="page" id="page-ocr">
-      <h2 class="section-title">📝 <span data-lang="ocr">Рукопись в текст</span></h2>
-      <div class="card text-center" id="ocrUploadArea"><div class="card-icon">📷</div><div class="card-title" data-lang="ocrUpload">Нажмите для загрузки</div><div class="card-desc" data-lang="ocrDesc">конспект, записка, рукописный текст</div></div>
+      <div class="section-title">📝 Рукопись в текст</div>
       <input type="file" id="ocrInput" accept="image/*" class="hidden">
-      <div id="ocrPreview" class="hidden"><img id="ocrImage" class="preview-img" src="" alt="фото"><button class="btn-sm" id="ocrRecognizeBtn">✨ <span data-lang="recognize">Распознать</span></button><div class="progress-bar hidden" id="ocrProgress"><div class="progress-fill" id="ocrProgressFill"></div></div><div id="ocrResult" class="result-text hidden"></div><button class="btn-sm hidden mt-2" id="ocrCopyBtn">📋 <span data-lang="copy">Копировать</span></button></div>
+      <input type="file" id="ocrCameraInput" accept="image/*" capture="environment" class="hidden">
+      <div style="display:flex;gap:8px;margin-bottom:10px;"><button class="btn btn-sm" id="ocrGalleryBtn" style="flex:1;">🖼️ Галерея</button><button class="btn btn-sm" id="ocrCameraBtn" style="flex:1;">📷 Камера</button></div>
+      <div id="ocrPreview" class="hidden"><img id="ocrImage" class="preview-img"><button class="btn btn-sm mt-2" id="ocrRecognizeBtn">✨ Распознать</button><div class="progress-bar hidden" id="ocrProgress"><div class="progress-fill" id="ocrProgressFill"></div></div><div id="ocrResult" class="result-text hidden"></div><button class="btn btn-sm hidden mt-2" id="ocrCopyBtn">📋 Копировать</button></div>
     </div>
 
-    <!-- ENHANCE -->
-    <div class="page" id="page-enhance">
-      <h2 class="section-title">✨ <span data-lang="enhance">Улучшение фото</span></h2>
-      <div class="card text-center" id="enhanceUploadArea"><div class="card-icon">🖼️</div><div class="card-title" data-lang="enhanceUpload">Загрузите фото</div><div class="card-desc" data-lang="enhanceDesc">сделаем текст читаемым</div></div>
-      <input type="file" id="enhanceInput" accept="image/*" class="hidden">
-      <div id="enhancePreview" class="hidden"><p style="color:var(--text-light);font-size:12px;"><span data-lang="before">До:</span></p><img id="enhanceOriginal" class="preview-img" src=""><button class="btn-sm" id="enhanceBtn">🔧 <span data-lang="improve">Улучшить</span></button><p style="color:var(--text-light);font-size:12px;margin-top:6px;"><span data-lang="after">После:</span></p><img id="enhanceResult" class="preview-img hidden" src=""><button class="btn-sm hidden mt-2" id="enhanceDownloadBtn">💾 <span data-lang="save">Сохранить</span></button></div>
-    </div>
+    <!-- УЛУЧШЕНИЕ -->
+    <div class="page" id="page-enhance"><div class="section-title">✨ Улучшение фото</div><div class="card text-center" id="enhanceUploadArea"><div style="font-size:40px;">🖼️</div><div class="card-title">Загрузить фото</div></div><input type="file" id="enhanceInput" accept="image/*" class="hidden"><div id="enhancePreview" class="hidden"><p class="text-light">До:</p><img id="enhanceOriginal" class="preview-img"><button class="btn btn-sm mt-2" id="enhanceBtn">🔧 Улучшить</button><div id="enhanceResultBox" class="hidden"><p class="text-light mt-2">После:</p><img id="enhanceResultImg" class="preview-img"></div></div></div>
 
-    <!-- HISTORY -->
-    <div class="page" id="page-history">
-      <h2 class="section-title">📋 <span data-lang="history">История поисков</span></h2>
-      <div id="historyList"><p style="color:rgba(255,255,255,0.5);text-align:center;" data-lang="empty">Пока пусто</p></div>
-      <button class="btn-sm mt-2" id="clearHistoryBtn" style="background:var(--danger);">🗑️ <span data-lang="clear">Очистить</span></button>
-    </div>
+    <!-- ИСТОРИЯ -->
+    <div class="page" id="page-history"><div class="section-title">📋 История</div><div id="historyList"><p class="text-light text-center">Пусто</p></div><button class="btn btn-sm mt-2" id="clearHistoryBtn" style="background:var(--danger);">🗑️ Очистить</button></div>
 
-    <!-- TRASH -->
-    <div class="page" id="page-trash">
-      <h2 class="section-title">🗑️ <span data-lang="trash">Корзина</span></h2>
-      <div id="trashList"><p style="color:rgba(255,255,255,0.5);text-align:center;" data-lang="trashEmpty">Корзина пуста</p></div>
-      <button class="btn-sm mt-2" id="emptyTrashBtn" style="background:var(--danger);">🗑️ <span data-lang="clearTrash">Очистить корзину</span></button>
-      <p style="color:rgba(255,255,255,0.4);font-size:10px;text-align:center;margin-top:4px;" data-lang="trashHint">Удалённые папки хранятся 30 дней</p>
-    </div>
-
-    <!-- CALENDAR -->
-    <div class="page" id="page-calendar">
-      <h2 class="section-title">📅 <span data-lang="calendar">Календарь операций</span></h2>
-      <div id="calendarView" style="text-align:center;"></div>
-      <div id="calendarDayInfo" class="result-text hidden" style="margin-top:8px;"></div>
-    </div>
-
-    <!-- SETTINGS -->
+    <!-- НАСТРОЙКИ -->
     <div class="page" id="page-settings">
-      <h2 class="section-title">⚙️ <span data-lang="settings">Настройки</span></h2>
-      <div class="card" id="changeLockCard"><div class="card-icon">⏱️</div><div class="card-title" data-lang="autoLock">Автоблокировка</div><div class="card-desc" data-lang="autoLockDesc">Настроить время бездействия</div></div>
-      <div class="card" id="changePasswordCard"><div class="card-icon">🔑</div><div class="card-title" data-lang="changePass">Сменить пароль</div></div>
-      <div class="card" id="fontSizeCard"><div class="card-icon">🔤</div><div class="card-title" data-lang="fontSize">Размер шрифта</div><div class="card-desc" data-lang="fontSizeDesc">Маленький / Средний / Большой</div></div>
-      <div class="card" id="colorSchemeCard"><div class="card-icon">🌈</div><div class="card-title" data-lang="colorScheme">Цветовая схема</div><div class="card-desc" data-lang="colorSchemeDesc">Настроить цвета приложения</div></div>
-      <div class="card" id="addInstructionCard"><div class="card-icon">📝</div><div class="card-title" data-lang="addInstr">Добавить инструкцию</div></div>
-      <div class="card" id="autoBackupCard"><div class="card-icon">☁️</div><div class="card-title" data-lang="autoBackup">Автобэкап</div><div class="card-desc" data-lang="autoBackupDesc">Раз в неделю</div></div>
+      <div class="section-title">⚙️ Настройки</div>
+      <div class="card" id="changeLockCard"><div class="card-title">⏱️ Автоблокировка</div></div>
+      <div class="card" id="changePasswordCard"><div class="card-title">🔑 Сменить пароль</div></div>
+      <div class="card" id="fontSizeCard"><div class="card-title">🔤 Размер шрифта</div></div>
+      <div class="card" id="colorSchemeCard"><div class="card-title">🌈 Цветовая схема</div></div>
     </div>
   </div>
 
-  <!-- NAV -->
   <div class="bottom-nav">
-    <button class="nav-item active" data-page="home"><span class="nav-icon">🏠</span><span data-lang="navHome">Главная</span></button>
-    <button class="nav-item" data-page="ocr"><span class="nav-icon">📝</span><span data-lang="navOcr">Текст</span></button>
-    <button class="nav-item" data-page="enhance"><span class="nav-icon">✨</span><span data-lang="navEnhance">Улучшить</span></button>
-    <button class="nav-item" data-page="calendar"><span class="nav-icon">📅</span><span data-lang="navCalendar">Календарь</span></button>
-    <button class="nav-item" data-page="trash"><span class="nav-icon">🗑️</span><span data-lang="navTrash">Корзина</span></button>
+    <button class="nav-item active" data-page="home"><span class="nav-icon">🏠</span>Главная</button>
+    <button class="nav-item" data-page="ocr"><span class="nav-icon">📝</span>Текст</button>
+    <button class="nav-item" data-page="enhance"><span class="nav-icon">✨</span>Улучшить</button>
+    <button class="nav-item" data-page="history"><span class="nav-icon">📋</span>История</button>
   </div>
 </div>
 
-<div class="modal-overlay hidden" id="modalOverlay"><div class="modal" id="modalContent"></div></div>
-
-<!-- Service Worker -->
 <script>
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', function() {
-    navigator.serviceWorker.register("data:application/javascript," + encodeURIComponent(
-      "self.addEventListener('install',e=>{e.waitUntil(caches.open('ais-pps-v2').then(c=>c.addAll(['/','/index.html'])));self.skipWaiting();});" +
-      "self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{let rc=res.clone();caches.open('ais-pps-v2').then(c=>c.put(e.request,rc));return res;}).catch(()=>caches.match('/index.html'))));});"
-    )).catch(()=>{});
-  });
-}
+if ('serviceWorker' in navigator) { window.addEventListener('load', function() { navigator.serviceWorker.register("data:application/javascript," + encodeURIComponent("self.addEventListener('install',e=>{e.waitUntil(caches.open('pps-new').then(c=>c.addAll(['/','/index.html'])));self.skipWaiting();});" + "self.addEventListener('fetch',e=>{e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request).then(res=>{let rc=res.clone();caches.open('pps-new').then(c=>c.put(e.request,rc));return res;}).catch(()=>caches.match('/index.html'))));});")).catch(()=>{}); }); }
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
 <script>
-  // ============ LANGUAGES ============
-  const LANG = {
-    ru: {
-      appTitle: 'Гид по АИС ППС', installPrompt: '📱 Установите как приложение', installBtn: 'Установить',
-      daysToReport: 'Дней до отчёта: ', nextReport: 'Следующий отчёт: ', setReportBtn: '📅 Задать дату',
-      voicePlaceholder: 'Нажмите и скажите, что найти...', searchPlaceholder: 'Например: выписка, заявление...',
-      searchResult: '📌 Результат поиска', copyInstr: '📋 Копировать инструкцию', favInstr: '⭐ В избранное',
-      favInstrTitle: '⭐ Избранные инструкции', folders: '📂 Папки', addFolder: '➕ Создать новую папку',
-      data: '💾 Данные', backup: '💾 Резервная копия', restore: '📥 Восстановить', exportFolder: '📤 Экспорт папки',
-      exportExcel: '📊 В Excel', back: 'Назад', subfolder: 'Подпапка', note: 'Заметка', addScreenshot: 'Скриншот',
-      crop: 'Обрезать', tags: 'Теги', remind: 'Напомнить', ocr: 'Рукопись в текст', ocrUpload: 'Нажмите для загрузки',
-      ocrDesc: 'конспект, записка, рукописный текст', recognize: 'Распознать', copy: 'Копировать',
-      enhance: 'Улучшение фото', enhanceUpload: 'Загрузите фото', enhanceDesc: 'сделаем текст читаемым',
-      before: 'До:', improve: 'Улучшить', after: 'После:', save: 'Сохранить', history: 'История поисков',
-      empty: 'Пока пусто', clear: 'Очистить', trash: 'Корзина', trashEmpty: 'Корзина пуста',
-      clearTrash: 'Очистить корзину', trashHint: 'Удалённые папки хранятся 30 дней',
-      calendar: 'Календарь операций', settings: 'Настройки', autoLock: 'Автоблокировка',
-      autoLockDesc: 'Настроить время бездействия', changePass: 'Сменить пароль', fontSize: 'Размер шрифта',
-      fontSizeDesc: 'Маленький / Средний / Большой', colorScheme: 'Цветовая схема',
-      colorSchemeDesc: 'Настроить цвета приложения', addInstr: 'Добавить инструкцию', autoBackup: 'Автобэкап',
-      autoBackupDesc: 'Раз в неделю', navHome: 'Главная', navOcr: 'Текст', navEnhance: 'Улучшить',
-      navCalendar: 'Календарь', navTrash: 'Корзина',
-      toastSaved: 'Сохранено!', toastCopied: 'Скопировано!', toastDeleted: 'Удалено!', toastRestored: 'Восстановлено!',
-      toastCreated: 'Создана!', toastExported: 'Экспортировано!'
-    },
-    en: {
-      appTitle: 'AIS PPS Guide', installPrompt: '📱 Install as app', installBtn: 'Install',
-      daysToReport: 'Days until report: ', nextReport: 'Next report: ', setReportBtn: '📅 Set date',
-      voicePlaceholder: 'Tap and say what to find...', searchPlaceholder: 'Example: statement, application...',
-      searchResult: '📌 Search result', copyInstr: '📋 Copy instruction', favInstr: '⭐ Add to favorites',
-      favInstrTitle: '⭐ Favorite instructions', folders: '📂 Folders', addFolder: '➕ Create new folder',
-      data: '💾 Data', backup: '💾 Backup', restore: '📥 Restore', exportFolder: '📤 Export folder',
-      exportExcel: '📊 Export Excel', back: 'Back', subfolder: 'Subfolder', note: 'Note', addScreenshot: 'Screenshot',
-      crop: 'Crop', tags: 'Tags', remind: 'Remind', ocr: 'Handwriting to text', ocrUpload: 'Tap to upload',
-      ocrDesc: 'notes, handwritten text', recognize: 'Recognize', copy: 'Copy',
-      enhance: 'Photo enhancement', enhanceUpload: 'Upload photo', enhanceDesc: 'make text readable',
-      before: 'Before:', improve: 'Improve', after: 'After:', save: 'Save', history: 'Search history',
-      empty: 'Empty', clear: 'Clear', trash: 'Trash', trashEmpty: 'Trash is empty',
-      clearTrash: 'Empty trash', trashHint: 'Deleted folders are kept for 30 days',
-      calendar: 'Operations calendar', settings: 'Settings', autoLock: 'Auto-lock',
-      autoLockDesc: 'Set inactivity time', changePass: 'Change password', fontSize: 'Font size',
-      fontSizeDesc: 'Small / Medium / Large', colorScheme: 'Color scheme',
-      colorSchemeDesc: 'Customize app colors', addInstr: 'Add instruction', autoBackup: 'Auto backup',
-      autoBackupDesc: 'Once a week', navHome: 'Home', navOcr: 'OCR', navEnhance: 'Enhance',
-      navCalendar: 'Calendar', navTrash: 'Trash',
-      toastSaved: 'Saved!', toastCopied: 'Copied!', toastDeleted: 'Deleted!', toastRestored: 'Restored!',
-      toastCreated: 'Created!', toastExported: 'Exported!'
-    }
-  };
-  let currentLang = localStorage.getItem('ais_pps_lang') || 'ru';
-  function t(key) { return (LANG[currentLang] && LANG[currentLang][key]) || key; }
-  function switchLang(lang) {
-    currentLang = lang; localStorage.setItem('ais_pps_lang', lang);
-    document.querySelectorAll('.lang-flag').forEach(f => f.classList.toggle('active', f.textContent.trim() === (lang==='ru'?'🇷🇺':'🇬🇧')));
-    document.querySelectorAll('[data-lang]').forEach(el => {
-      const key = el.dataset.lang;
-      if (el.tagName === 'INPUT' && el.type === 'text') el.placeholder = t(key);
-      else if (el.tagName === 'BUTTON' || el.tagName === 'SPAN' || el.tagName === 'DIV' || el.tagName === 'P' || el.tagName === 'H1' || el.tagName === 'H2') {
-        if (!el.querySelector('span') && !el.querySelector('button')) el.textContent = t(key);
-      }
-    });
-    updateReportCounter();
-  }
-  document.querySelectorAll('.lang-flag').forEach(f => f.addEventListener('click', () => switchLang(f.textContent.trim()==='🇷🇺'?'ru':'en')));
-
-  // ============ SOUND ============
-  const AudioContext = window.AudioContext || window.webkitAudioContext; let audioCtx;
-  function playSound(t) { try { if (!audioCtx) audioCtx = new AudioContext(); const o = audioCtx.createOscillator(), g = audioCtx.createGain(); o.connect(g); g.connect(audioCtx.destination); g.gain.value = 0.05; if (t === 'click') { o.frequency.value = 800; o.type = 'sine'; g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.1); } else if (t === 'success') { o.frequency.value = 600; o.type = 'sine'; g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2); const o2 = audioCtx.createOscillator(); o2.connect(g); o2.frequency.value = 900; o2.type = 'sine'; o2.start(); o2.stop(audioCtx.currentTime + 0.2); } else if (t === 'delete') { o.frequency.value = 200; o.type = 'sawtooth'; g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.15); } o.start(); o.stop(audioCtx.currentTime + 0.15); } catch(e) {} }
-  function showToast(m) { const t = document.getElementById('toast'); t.textContent = m; t.classList.remove('hidden'); setTimeout(() => t.classList.add('hidden'), 2000); }
-
-  // ============ SPLASH ============
-  setTimeout(() => document.getElementById('splash').classList.add('hidden'), 1800);
-
-  // ============ PASSWORD ============
-  const PASSWORD_KEY = 'ais_pps_pwd'; let appPassword = localStorage.getItem(PASSWORD_KEY) || '1234';
-  let isUnlocked = false, lockTimeout = null;
-  let lockDelay = parseInt(localStorage.getItem('ais_pps_lock_delay') || '5');
-  const ps = document.getElementById('passwordScreen'), pi = document.getElementById('passwordInput'), pe = document.getElementById('passwordError'), ph = document.getElementById('passwordHint');
-  if (localStorage.getItem(PASSWORD_KEY)) ph.textContent = ''; else ph.textContent = 'Стандартный пароль: 1234';
-  function checkPassword() { if (pi.value.trim() === appPassword) { isUnlocked = true; ps.classList.add('hidden'); pe.textContent = ''; pi.value = ''; startAutoLock(); playSound('success'); } else { pe.textContent = 'Неверный пароль'; playSound('delete'); } }
-  function lockApp() { isUnlocked = false; ps.classList.remove('hidden'); pi.value = ''; pe.textContent = ''; if (lockTimeout) clearTimeout(lockTimeout); }
+  const PASSWORD_KEY = 'pps_new_pwd'; let appPassword = localStorage.getItem(PASSWORD_KEY) || '1234';
+  let isUnlocked = !localStorage.getItem(PASSWORD_KEY);
+  let lockDelay = parseInt(localStorage.getItem('pps_new_lock') || '5');
+  let lockTimeout = null;
+  function checkPassword() { if (document.getElementById('passwordInput').value.trim() === appPassword) { isUnlocked = true; document.getElementById('passwordScreen').classList.add('hidden'); startAutoLock(); } }
+  function lockApp() { isUnlocked = false; document.getElementById('passwordScreen').classList.remove('hidden'); if (lockTimeout) clearTimeout(lockTimeout); }
   function startAutoLock() { if (lockTimeout) clearTimeout(lockTimeout); if (lockDelay === 0) return; lockTimeout = setTimeout(() => { if (isUnlocked) lockApp(); }, lockDelay * 60 * 1000); }
   document.getElementById('passwordSubmit').addEventListener('click', checkPassword);
-  pi.addEventListener('keydown', e => { if (e.key === 'Enter') checkPassword(); });
   document.getElementById('lockBtn').addEventListener('click', lockApp);
   ['click','touchstart','scroll'].forEach(e => document.addEventListener(e, () => { if (isUnlocked) startAutoLock(); }, { passive: true }));
-  setTimeout(() => { if (!isUnlocked) ps.classList.remove('hidden'); }, 1900);
+  setTimeout(() => { document.getElementById('splash').classList.add('hidden'); if (!isUnlocked) document.getElementById('passwordScreen').classList.remove('hidden'); }, 1500);
+  function showToast(m) { const t = document.getElementById('toast'); t.textContent = m; t.classList.remove('hidden'); setTimeout(() => t.classList.add('hidden'), 2000); }
 
-  // ============ THEME & FONT ============
-  let isDark = localStorage.getItem('ais_pps_dark') === 'true'; if (isDark) document.body.classList.add('dark-theme');
-  document.getElementById('themeToggle').addEventListener('click', () => { isDark = !isDark; document.body.classList.toggle('dark-theme', isDark); localStorage.setItem('ais_pps_dark', isDark); playSound('click'); });
-  let fontSize = localStorage.getItem('ais_pps_font') || 'medium';
-  function applyFontSize(s) { const sizes = { small: { base: '12px', sm: '10px', lg: '14px' }, medium: { base: '14px', sm: '12px', lg: '16px' }, large: { base: '16px', sm: '14px', lg: '18px' } }; const v = sizes[s]; document.documentElement.style.setProperty('--font-size', v.base); document.documentElement.style.setProperty('--font-size-sm', v.sm); document.documentElement.style.setProperty('--font-size-lg', v.lg); }
-  applyFontSize(fontSize);
-  let customColors = JSON.parse(localStorage.getItem('ais_pps_colors') || '{"bg":"#5B0E8A","bgDark":"#3D0660","orange":"#FF8C00"}');
-  function applyColors() { const r = document.documentElement.style; r.setProperty('--bg', customColors.bg); r.setProperty('--bg-dark', customColors.bgDark); r.setProperty('--orange', customColors.orange); }
-  applyColors();
-
-  // ============ REPORT COUNTER ============
-  let reportDate = localStorage.getItem('ais_pps_report_date') || '';
-  function updateReportCounter() {
-    const dc = document.getElementById('daysCount'), nd = document.getElementById('nextReportDate');
-    if (reportDate) {
-      const now = new Date(), target = new Date(reportDate);
-      const diff = Math.ceil((target - now) / (1000 * 60 * 60 * 24));
-      dc.textContent = diff >= 0 ? diff : 0;
-      nd.textContent = new Date(reportDate).toLocaleDateString('ru-RU');
-    } else {
-      dc.textContent = '--'; nd.textContent = currentLang === 'ru' ? 'не задан' : 'not set';
-    }
-  }
-  updateReportCounter();
-  document.getElementById('setReportDateBtn').addEventListener('click', () => {
-    showModal(`<h2>📅 ${t('setReportBtn')}</h2><input type="date" id="rd" value="${reportDate}"><div class="btn-row"><button class="btn btn-secondary" id="mc">${t('back')}</button><button class="btn btn-primary" id="md">${t('save')}</button></div>`);
-    document.getElementById('mc').addEventListener('click', hideModal);
-    document.getElementById('md').addEventListener('click', () => { reportDate = document.getElementById('rd').value; localStorage.setItem('ais_pps_report_date', reportDate); updateReportCounter(); hideModal(); showToast(t('toastSaved')); });
-  });
-
-  // ============ SHAKE FOR VOICE ============
-  if (window.DeviceMotionEvent) {
-    let lastShake = 0;
-    window.addEventListener('devicemotion', (e) => {
-      const acc = e.accelerationIncludingGravity;
-      if (!acc) return;
-      const magnitude = Math.sqrt(acc.x*acc.x + acc.y*acc.y + acc.z*acc.z);
-      const now = Date.now();
-      if (magnitude > 25 && now - lastShake > 2000 && isUnlocked) {
-        lastShake = now;
-        document.getElementById('voiceBtn').click();
-      }
-    });
-  }
-
-  // ============ DATA ============
-  const STORAGE_KEY = 'ais_pps_v3';
-  function getDefaultData() { return { folders: {}, history: [], customInstructions: {}, favorites: [], trash: [], notes: {}, reminders: [], settings: { sortMode: 'date', storageLimitMB: 200, autoBackup: false, lastBackup: null }, operationsLog: {} }; }
-  function loadData() { const r = localStorage.getItem(STORAGE_KEY); if (r) { try { return JSON.parse(r); } catch(e) { return getDefaultData(); } } return getDefaultData(); }
-  function saveData(d) { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
-  let appData = loadData();
-  let searchMode = localStorage.getItem('ais_pps_search_mode') || 'detail';
-
-  function logOperation(type, detail) {
-    const today = new Date().toISOString().slice(0,10);
-    if (!appData.operationsLog) appData.operationsLog = {};
-    if (!appData.operationsLog[today]) appData.operationsLog[today] = [];
-    appData.operationsLog[today].push({ type, detail, time: new Date().toISOString() });
-    saveData(appData);
-  }
-
-  // ============ NAVIGATION ============
-  let currentPage = 'home', currentFolder = null, currentSubfolder = null, selectedScreenshotIndex = -1;
+  let currentPage = 'home', currentFolder = null;
   function navigateTo(p) {
-    document.querySelectorAll('.page').forEach(x => x.classList.remove('active'));
-    const tp = document.getElementById('page-' + p); if (tp) tp.classList.add('active');
+    document.querySelectorAll('.page').forEach(x => x.classList.remove('active')); document.getElementById('page-' + p).classList.add('active');
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    const ni = document.querySelector('[data-page="' + p + '"]'); if (ni) ni.classList.add('active');
+    const nav = document.querySelector('[data-page="' + p + '"]'); if (nav) nav.classList.add('active');
     currentPage = p;
-    if (p === 'home') { renderFolders(); renderFavorites(); updateReportCounter(); }
-    if (p === 'history') renderHistory();
-    if (p === 'trash') renderTrash();
-    if (p === 'calendar') renderCalendar();
-    document.getElementById('mainContent').scrollTop = 0; hideContextMenu();
+    if (p === 'home') renderFolders(); if (p === 'history') renderHistory();
   }
   document.querySelectorAll('.nav-item').forEach(b => b.addEventListener('click', () => navigateTo(b.dataset.page)));
   document.getElementById('settingsBtn').addEventListener('click', () => navigateTo('settings'));
 
-  // ============ MODAL ============
-  const mo = document.getElementById('modalOverlay'), mc = document.getElementById('modalContent');
-  function showModal(h, cb) { mc.innerHTML = h; mo.classList.remove('hidden'); if (cb) { document.getElementById('modalConfirmBtn')?.addEventListener('click', () => { cb(); hideModal(); }); } }
-  function hideModal() { mo.classList.add('hidden'); }
-  mo.addEventListener('click', e => { if (e.target === mo) hideModal(); });
+  let isDark = false;
+  document.getElementById('themeToggle').addEventListener('click', () => { isDark = !isDark; document.body.classList.toggle('dark-theme', isDark); });
 
-  // ============ CONTEXT MENU ============
-  const cm = document.getElementById('contextMenu'); let ctxTarget = null;
-  function showContextMenu(x, y, items) { cm.innerHTML = items.map(i => `<button data-action="${i.action}">${i.icon||''} ${i.label}</button>`).join(''); cm.style.left = Math.min(x, window.innerWidth-200)+'px'; cm.style.top = Math.min(y, window.innerHeight-250)+'px'; cm.classList.remove('hidden'); cm.querySelectorAll('button').forEach(b => b.addEventListener('click', () => { const a = b.dataset.action; hideContextMenu(); handleContextAction(a); })); }
-  function hideContextMenu() { cm.classList.add('hidden'); ctxTarget = null; }
-  function handleContextAction(a) {
-    if (a === 'rename') showRenameModal(ctxTarget);
-    if (a === 'pin') togglePin(ctxTarget);
-    if (a === 'delete') moveToTrash(ctxTarget);
-    if (a === 'color') showColorModal(ctxTarget);
-    if (a === 'subfolder') showAddSubfolderModal(ctxTarget);
-    if (a === 'secret') toggleSecret(ctxTarget);
-    if (a === 'export') exportFolder(ctxTarget);
-  }
-  document.addEventListener('click', e => { if (!cm.contains(e.target)) hideContextMenu(); });
+  const STORAGE_KEY = 'pps_new_data';
+  function loadData() { const r = localStorage.getItem(STORAGE_KEY); return r ? JSON.parse(r) : { folders: {}, history: [] }; }
+  function saveData(d) { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
+  let appData = loadData();
 
-  // ============ FOLDERS ============
-  let sortMode = appData.settings?.sortMode || 'date';
-  function getFolderSortKey(n) { const f = appData.folders[n] || {}; if (sortMode === 'pinned') return (f.pinned?'0':'1')+n; if (sortMode === 'alpha') return n.toLowerCase(); if (sortMode === 'popular') return String(999999 - (f.openCount||0)).padStart(6,'0')+n; return (f.createdAt||'9999')+n; }
   function renderFolders() {
     const list = document.getElementById('folderList'), folders = Object.keys(appData.folders);
-    const sortLabels = { date: '↓ Дата', alpha: '↓ А-Я', pinned: '↓ Закреп', popular: '↓ Частые' };
-    document.getElementById('sortBtn').textContent = sortLabels[sortMode] || '↓ Дата';
-    if (folders.length === 0) { list.innerHTML = '<p style="color:rgba(255,255,255,0.5);text-align:center;padding:20px;">'+t('empty')+'</p>'; return; }
-    const sorted = folders.sort((a,b) => { const ka=getFolderSortKey(a), kb=getFolderSortKey(b); return ka<kb?-1:ka>kb?1:0; });
-    list.innerHTML = sorted.map(n => {
-      const f = appData.folders[n] || {}; const cnt = f.screenshots?f.screenshots.length:0; const sc = f.subfolders?Object.keys(f.subfolders).length:0;
-      const pinned = f.pinned, secret = f.secret; const color = f.color||'none';
-      const cd = color!=='none'?`<span class="color-dot ${color}"></span>`:'<span class="color-dot none"></span>';
-      return `<div class="folder-item ${pinned?'pinned':''} ${secret?'secret':''}" data-folder="${n.replace(/"/g,'&quot;')}" ontouchstart="handleFT(event)" oncontextmenu="event.preventDefault();">
-        ${pinned?'<span class="pin-indicator">📌</span>':''}${secret?'<span class="secret-indicator">🔒</span>':''}
-        <span class="folder-icon">${f.icon||'📂'}</span>
-        <div class="folder-info" onclick="openFolder('${n.replace(/'/g,"\\'")}')">
-          <div class="folder-name">${cd} ${n}</div>
-          <div class="folder-meta"><span>${cnt} скрин.</span>${sc>0?`<span>${sc} под.</span>`:''}${(f.openCount||0)>0?`<span>👁 ${f.openCount}</span>`:''}</div>
-        </div>
-        <button class="icon-btn" style="font-size:14px;opacity:0.6;" onclick="event.stopPropagation();showFolderCtx(event,'${n.replace(/'/g,"\\'")}')">⋯</button>
-      </div>`;
-    }).join('');
+    const sorted = folders.sort((a,b) => { const fa = appData.folders[a]||{}, fb = appData.folders[b]||{}; if (fa.pinned && !fb.pinned) return -1; if (!fa.pinned && fb.pinned) return 1; return 0; });
+    list.innerHTML = sorted.length === 0 ? '<p class="text-light text-center">Нет папок</p>' :
+      sorted.map(n => { const f = appData.folders[n]||{}; const cnt = (f.screenshots||[]).length; const color = f.color||'none'; const cd = color!=='none'?`<span class="color-dot ${color}"></span>`:''; return `<div class="folder-item ${f.pinned?'pinned':''}" data-folder="${n}" ontouchstart="handleFT(event)" onclick="openFolder('${n.replace(/'/g,"\\'")}')" oncontextmenu="event.preventDefault();">${f.pinned?'<span class="pin-indicator">📌</span>':''}<span class="folder-icon">${f.icon||'📂'}</span><div style="flex:1;"><div class="folder-name">${cd} ${n}</div><div class="folder-meta">${cnt} скрин.</div></div><button class="icon-btn" style="font-size:14px;opacity:0.6;" onclick="event.stopPropagation();showCtx(event,'${n.replace(/'/g,"\\'")}')">⋯</button></div>`; }).join('');
   }
-
-  let ftX=0,ftY=0,ftEl=null; let longPressTimer=null;
-  function handleFT(e) { if (e.type==='touchstart') { ftX=e.touches[0].clientX; ftY=e.touches[0].clientY; ftEl=e.currentTarget; longPressTimer = setTimeout(() => { const fn=ftEl.dataset.folder; if(fn) { ctxTarget=fn; showFolderCtx(e, fn); } }, 600); } }
-  document.addEventListener('touchend', e => { if(longPressTimer) clearTimeout(longPressTimer); if (!ftEl) return; const dx=e.changedTouches[0].clientX-ftX, dy=e.changedTouches[0].clientY-ftY; if (Math.abs(dx)>80&&Math.abs(dx)>Math.abs(dy)) { const fn=ftEl.dataset.folder; if (dx<-50) moveToTrash(fn); else if (dx>50) togglePin(fn); } ftEl=null; });
-  document.addEventListener('touchmove', () => { if(longPressTimer) clearTimeout(longPressTimer); });
-
-  function showFolderCtx(e, fn) { e.stopPropagation(); ctxTarget=fn; const f=appData.folders[fn]||{};
-    showContextMenu(e.clientX||e.touches[0].clientX, e.clientY||e.touches[0].clientY, [
-      {icon:'✏️',label:'Переименовать',action:'rename'},{icon:f.pinned?'📌':'📍',label:f.pinned?'Открепить':'Закрепить',action:'pin'},
-      {icon:'🎨',label:'Цветная метка',action:'color'},{icon:'📁',label:'Подпапка',action:'subfolder'},
-      {icon:f.secret?'🔓':'🔒',label:f.secret?'Раскрыть':'Секретная',action:'secret'},
-      {icon:'📤',label:'Экспорт',action:'export'},{icon:'🗑️',label:'Удалить',action:'delete'}
-    ]); }
-
-  function addFolder(name, icon, color, secret) { if (appData.folders[name]) { showToast('Уже есть!'); return; }
-    appData.folders[name] = { screenshots:[], subfolders:{}, createdAt: new Date().toISOString(), pinned:false, icon:icon||'📂', color:color||'none', secret:!!secret, openCount:0, tags:[] };
-    saveData(appData); renderFolders(); logOperation('folder_create', name); playSound('success'); showToast(t('toastCreated')); }
-  function moveToTrash(name) { const f = appData.folders[name]; if (!f) return; appData.trash.push({ name, data: f, deletedAt: new Date().toISOString() }); delete appData.folders[name]; saveData(appData); renderFolders(); if (currentFolder===name) navigateTo('home'); logOperation('folder_delete', name); playSound('delete'); showToast(t('toastDeleted')); }
-  function restoreFromTrash(i) { const t = appData.trash[i]; if (!t) return; appData.folders[t.name] = t.data; appData.trash.splice(i,1); saveData(appData); renderFolders(); renderTrash(); playSound('success'); showToast(t('toastRestored')); }
-  function renderTrash() { const l = document.getElementById('trashList'); if (!appData.trash.length) { l.innerHTML='<p style="color:rgba(255,255,255,0.5);text-align:center;">'+t('trashEmpty')+'</p>'; return; }
-    l.innerHTML = appData.trash.map((t,i) => `<div class="folder-item trash-item"><span class="folder-icon">🗑️</span><div class="folder-info"><div class="folder-name">${t.name}</div><div class="folder-count">Удалено: ${new Date(t.deletedAt).toLocaleDateString('ru-RU')}</div></div><button class="btn-xs" onclick="restoreFromTrash(${i})">↩️</button></div>`).join(''); }
-  document.getElementById('emptyTrashBtn').addEventListener('click', () => { if (confirm('Очистить?')) { appData.trash = []; saveData(appData); renderTrash(); showToast(t('toastDeleted')); } });
-  function renameFolder(o,n) { if (appData.folders[n]) { showToast('Уже есть!'); return; } appData.folders[n]=appData.folders[o]; delete appData.folders[o]; if (currentFolder===o) currentFolder=n; saveData(appData); renderFolders(); playSound('success'); }
-  function togglePin(n) { const f=appData.folders[n]; if(!f) return; f.pinned=!f.pinned; saveData(appData); renderFolders(); showToast(f.pinned?'Закреплено':'Откреплено'); }
-  function toggleSecret(n) { const f=appData.folders[n]; if(!f) return; f.secret=!f.secret; saveData(appData); renderFolders(); showToast(f.secret?'Секретная':'Обычная'); }
-  function setFolderColor(n,c) { const f=appData.folders[n]; if(!f) return; f.color=c; saveData(appData); renderFolders(); showToast('Метка обновлена'); }
-  function exportFolder(n) { const f=appData.folders[n]; if(!f) return; const blob=new Blob([JSON.stringify({[n]:f},null,2)],{type:'application/json'}); const a=document.createElement('a'); a.download='folder_'+n+'.json'; a.href=URL.createObjectURL(blob); a.click(); showToast(t('toastExported')); }
-  function showRenameModal(n) { showModal(`<h2>✏️ Переименовать</h2><input id="ri" value="${n}"><div class="btn-row"><button class="btn btn-secondary" id="mc">Отмена</button><button class="btn btn-primary" id="md">Сохранить</button></div>`); document.getElementById('mc').addEventListener('click',hideModal); document.getElementById('md').addEventListener('click',()=>{const v=document.getElementById('ri').value.trim();if(v)renameFolder(n,v);hideModal();}); }
-  function showColorModal(n) { const cur=(appData.folders[n]?.color)||'none'; showModal(`<h2>🎨 Метка</h2><div class="color-options">${['red','yellow','green','blue','none'].map(c=>`<div class="color-option ${c} ${cur===c?'selected':''}" data-color="${c}"></div>`).join('')}</div><button class="btn btn-primary" id="mc2" style="width:100%;">Готово</button>`); document.querySelectorAll('.color-option').forEach(o=>o.addEventListener('click',()=>{document.querySelectorAll('.color-option').forEach(x=>x.classList.remove('selected'));o.classList.add('selected');})); document.getElementById('mc2').addEventListener('click',()=>{const s=document.querySelector('.color-option.selected');if(s)setFolderColor(n,s.dataset.color);hideModal();}); }
-  function showAddSubfolderModal(n) { showModal(`<h2>📁 Подпапка</h2><input id="si" placeholder="Название"><div class="btn-row"><button class="btn btn-secondary" id="mc">Отмена</button><button class="btn btn-primary" id="md">Создать</button></div>`); document.getElementById('mc').addEventListener('click',hideModal); document.getElementById('md').addEventListener('click',()=>{const v=document.getElementById('si').value.trim();if(v){if(!appData.folders[n].subfolders)appData.folders[n].subfolders={};if(appData.folders[n].subfolders[v])showToast('Уже есть!');else{appData.folders[n].subfolders[v]=[];saveData(appData);showToast('Создана!');}}hideModal();if(currentFolder===n)renderSubfolders();}); }
-
   document.getElementById('addFolderBtn').addEventListener('click', () => {
-    showModal(`<h2>📂 ${t('addFolder')}</h2><input id="nf" placeholder="Название"><div id="ip" style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:8px;">${['📂','📁','🗂️','📋','📌','💼','📊','📝','🔖','📎'].map(i=>`<span style="font-size:22px;cursor:pointer;padding:4px;" data-i="${i}">${i}</span>`).join('')}</div><label style="font-size:12px;color:rgba(255,255,255,0.5);"><input type="checkbox" id="sc"> Секретная папка</label><div class="btn-row"><button class="btn btn-secondary" id="mc">${t('back')}</button><button class="btn btn-primary" id="md">${t('addFolder')}</button></div>`);
-    let si='📂'; document.getElementById('ip').addEventListener('click',e=>{if(e.target.dataset.i){si=e.target.dataset.i;document.querySelectorAll('#ip span').forEach(s=>s.style.border='none');e.target.style.border='2px solid var(--orange)';e.target.style.borderRadius='6px';}});
-    document.getElementById('mc').addEventListener('click',hideModal); document.getElementById('md').addEventListener('click',()=>{const v=document.getElementById('nf').value.trim();if(v)addFolder(v,si,'none',document.getElementById('sc').checked);hideModal();});
-  });
-  document.getElementById('sortBtn').addEventListener('click', () => { const m=['date','alpha','pinned','popular'],i=m.indexOf(sortMode); sortMode=m[(i+1)%m.length]; appData.settings.sortMode=sortMode; saveData(appData); renderFolders(); playSound('click'); });
-  document.getElementById('exportFolderBtn').addEventListener('click', () => { const f=Object.keys(appData.folders); if(!f.length){showToast('Нет папок');return;} showModal(`<h2>📤 ${t('exportFolder')}</h2><select id="efSel">${f.map(n=>`<option value="${n}">${n}</option>`).join('')}</select><div class="btn-row"><button class="btn btn-secondary" id="mc">${t('back')}</button><button class="btn btn-primary" id="md">${t('exportFolder')}</button></div>`); document.getElementById('mc').addEventListener('click',hideModal); document.getElementById('md').addEventListener('click',()=>{exportFolder(document.getElementById('efSel').value);hideModal();}); });
-
-  // ============ EXPORT TO EXCEL ============
-  document.getElementById('exportExcelBtn').addEventListener('click', () => {
-    const log = appData.operationsLog || {};
-    let csv = 'Дата;Тип;Описание;Время\n';
-    Object.keys(log).sort().forEach(date => {
-      log[date].forEach(op => {
-        csv += `${date};${op.type};${op.detail};${new Date(op.time).toLocaleTimeString('ru-RU')}\n`;
-      });
-    });
-    const blob = new Blob(['\uFEFF' + csv], {type: 'text/csv;charset=utf-8;'});
-    const a = document.createElement('a'); a.download = 'operations_export.csv'; a.href = URL.createObjectURL(blob); a.click();
-    showToast(t('toastExported'));
+    const mo = document.getElementById('modalOverlay'), mc = document.getElementById('modalContent');
+    let si = '📂';
+    mc.innerHTML = `<h2>📂 Новая папка</h2><input type="text" id="nf" placeholder="Название"><p style="font-size:12px;color:rgba(255,255,255,0.5);">Иконка:</p><div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap;">${['📂','📁','🗂️','📋','📌','💼','📊','📝'].map(i => `<span style="font-size:28px;cursor:pointer;padding:6px;border:2px solid transparent;border-radius:8px;" data-i="${i}">${i}</span>`).join('')}</div><div class="btn-row"><button class="btn btn-secondary" id="mcBtn">Отмена</button><button class="btn btn-primary" id="mdBtn">Создать</button></div>`;
+    mo.classList.remove('hidden');
+    document.querySelectorAll('#modalContent span[data-i]').forEach(s => s.addEventListener('click', () => { si = s.dataset.i; document.querySelectorAll('#modalContent span[data-i]').forEach(x => x.style.border = '2px solid transparent'); s.style.border = '2px solid var(--orange)'; }));
+    document.getElementById('mcBtn').onclick = () => mo.classList.add('hidden');
+    document.getElementById('mdBtn').onclick = () => { const n = document.getElementById('nf').value.trim(); if (n && !appData.folders[n]) { appData.folders[n] = { screenshots: [], icon: si, color: 'none', pinned: false, createdAt: new Date().toISOString() }; saveData(appData); renderFolders(); showToast('✅ Создана!'); } mo.classList.add('hidden'); };
   });
 
-  // ============ CALENDAR ============
-  function renderCalendar() {
-    const view = document.getElementById('calendarView');
-    const now = new Date(); const year = now.getFullYear(); const month = now.getMonth();
-    const firstDay = new Date(year, month, 1).getDay() || 7;
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
-    const log = appData.operationsLog || {};
-    let html = `<div style="font-weight:700;margin-bottom:8px;">${now.toLocaleDateString('ru-RU',{month:'long',year:'numeric'})}</div>`;
-    html += '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;">';
-    ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].forEach(d => html += `<div style="font-size:10px;color:var(--text-light);">${d}</div>`);
-    for (let i = 1; i < firstDay; i++) html += '<div></div>';
-    for (let d = 1; d <= daysInMonth; d++) {
-      const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
-      const hasOps = log[dateStr] && log[dateStr].length > 0;
-      const isToday = d === now.getDate();
-      html += `<div class="calendar-day ${hasOps?'has-ops':''} ${isToday?'today':''}" onclick="showDayOps('${dateStr}')">${d}</div>`;
-    }
-    html += '</div>';
-    view.innerHTML = html;
+  let ctxTarget = null;
+  function showCtx(e, name) { e.stopPropagation(); ctxTarget = name;
+    const f = appData.folders[name]||{};
+    const cm = document.createElement('div'); cm.style.cssText = 'position:fixed;background:var(--bg-light);border:2px solid var(--orange);border-radius:16px;padding:6px;z-index:999;min-width:180px;';
+    cm.style.left = Math.min(e.clientX, window.innerWidth-200)+'px'; cm.style.top = Math.min(e.clientY, window.innerHeight-200)+'px';
+    cm.innerHTML = `<button onclick="renameFolder()">✏️ Переименовать</button><button onclick="togglePin()">${f.pinned?'📍 Открепить':'📌 Закрепить'}</button><button onclick="setColor()">🎨 Метка</button><button onclick="delFolder()">🗑️ Удалить</button>`;
+    document.body.appendChild(cm); cm.querySelectorAll('button').forEach(b => b.onclick = () => cm.remove());
+    setTimeout(() => document.addEventListener('click', function h() { cm.remove(); document.removeEventListener('click', h); }), 100);
   }
-  window.showDayOps = function(dateStr) {
-    const log = appData.operationsLog || {};
-    const ops = log[dateStr] || [];
-    const info = document.getElementById('calendarDayInfo');
-    if (ops.length === 0) {
-      info.innerHTML = `<p style="text-align:center;">${t('empty')}</p>`;
-    } else {
-      info.innerHTML = `<strong>${dateStr}</strong><br>` + ops.map(o => `🕐 ${new Date(o.time).toLocaleTimeString('ru-RU')} — ${o.type}: ${o.detail}`).join('<br>');
-    }
-    info.classList.remove('hidden');
-  };
+  function renameFolder() { const n = prompt('Новое название:', ctxTarget); if (n && n !== ctxTarget && !appData.folders[n]) { appData.folders[n] = appData.folders[ctxTarget]; delete appData.folders[ctxTarget]; saveData(appData); renderFolders(); } }
+  function togglePin() { appData.folders[ctxTarget].pinned = !appData.folders[ctxTarget].pinned; saveData(appData); renderFolders(); }
+  function setColor() { const colors = ['red','yellow','green','blue','none']; const cur = colors.indexOf(appData.folders[ctxTarget]?.color||'none'); appData.folders[ctxTarget].color = colors[(cur+1)%5]; saveData(appData); renderFolders(); }
+  function delFolder() { if (confirm('Удалить «'+ctxTarget+'»?')) { delete appData.folders[ctxTarget]; saveData(appData); renderFolders(); } }
 
-  // ============ SUBFOLDERS & SCREENSHOTS ============
-  function openFolder(n) { currentFolder=n; currentSubfolder=null; appData.folders[n].openCount=(appData.folders[n].openCount||0)+1; saveData(appData); document.getElementById('folderTitle').textContent='📂 '+n; navigateTo('folder'); renderSubfolders(); renderScreenshots(); renderFolderNotes(); logOperation('folder_open', n); }
-  function openSubfolder(n) { currentSubfolder=n; document.getElementById('folderTitle').textContent='📁 '+n; renderSubfolders(); renderScreenshots(); }
-  function renderSubfolders() { const l=document.getElementById('subfolderList'); if(!currentFolder)return; const f=appData.folders[currentFolder]; if(!f)return; const s=f.subfolders||{}; const names=Object.keys(s); l.innerHTML=names.length?names.map(n=>`<div class="subfolder-item" onclick="openSubfolder('${n.replace(/'/g,"\\'")}')">📁 ${n} (${s[n].length})</div>`).join(''):''; }
-  function getCurrentScreenshots() { if(!currentFolder)return[]; const f=appData.folders[currentFolder]; if(!f)return[]; if(currentSubfolder&&f.subfolders&&f.subfolders[currentSubfolder])return f.subfolders[currentSubfolder]; return f.screenshots||[]; }
-  function addScreenshotToCurrent(src) { if(!currentFolder)return; const f=appData.folders[currentFolder]; if(!f)return; const entry={src,note:'',tags:[],createdAt:new Date().toISOString()}; if(currentSubfolder){if(!f.subfolders)f.subfolders={};if(!f.subfolders[currentSubfolder])f.subfolders[currentSubfolder]=[];f.subfolders[currentSubfolder].push(entry);}else{if(!f.screenshots)f.screenshots=[];f.screenshots.push(entry);} saveData(appData); renderScreenshots(); logOperation('screenshot_add', currentFolder); }
-  function deleteScreenshot(i) { const s=getCurrentScreenshots(); s.splice(i,1); saveData(appData); renderScreenshots(); playSound('delete'); }
-  function renderScreenshots() {
-    const car=document.getElementById('screenshotCarousel'), sc=getCurrentScreenshots();
-    car.innerHTML=sc.length===0?'<p style="color:rgba(255,255,255,0.5);padding:20px;width:100%;text-align:center;">'+t('empty')+'</p>':
-      sc.map((s,i) => `<div style="position:relative;flex-shrink:0;">
-        <img src="${typeof s==='string'?s:s.src}" onclick="openLightbox(${i})" style="width:140px;height:200px;object-fit:cover;border-radius:14px;border:2px solid var(--orange);cursor:pointer;">
-        <button style="position:absolute;top:-4px;right:-4px;background:var(--danger);color:white;border:none;border-radius:50%;width:22px;height:22px;font-size:10px;cursor:pointer;" onclick="event.stopPropagation();deleteScreenshot(${i})">✕</button>
-        ${s.tags&&s.tags.length?s.tags.map(t=>`<span class="tag" style="position:absolute;bottom:2px;left:2px;">${t}</span>`).join(''):''}
-        ${s.note?`<div class="note-text" style="position:absolute;bottom:18px;left:2px;background:rgba(0,0,0,0.6);padding:1px 4px;border-radius:4px;">📝 ${s.note.substring(0,20)}</div>`:''}
-      </div>`).join('');
-  }
-  document.getElementById('backFromFolder').addEventListener('click', () => { if(currentSubfolder){currentSubfolder=null;document.getElementById('folderTitle').textContent='📂 '+currentFolder;renderSubfolders();renderScreenshots();}else navigateTo('home'); });
-  document.getElementById('addScreenshotBtn').addEventListener('click', () => document.getElementById('screenshotInput').click());
-  document.getElementById('screenshotInput').addEventListener('change', e => { if(e.target.files.length){Array.from(e.target.files).forEach(f=>{const r=new FileReader();r.onload=ev=>addScreenshotToCurrent(ev.target.result);r.readAsDataURL(f);});e.target.value='';playSound('success');} });
-  document.getElementById('addSubfolderBtn').addEventListener('click', () => { if(currentFolder)showAddSubfolderModal(currentFolder); });
+  let ftX=0, ftY=0, ftEl=null, longTimer=null;
+  function handleFT(e) { if (e.type==='touchstart') { ftX=e.touches[0].clientX; ftY=e.touches[0].clientY; ftEl=e.currentTarget; longTimer = setTimeout(() => { const fn=ftEl.dataset.folder; if(fn){ ctxTarget=fn; const f=appData.folders[fn]||{}; const cm=document.createElement('div'); cm.style.cssText='position:fixed;background:var(--bg-light);border:2px solid var(--orange);border-radius:16px;padding:6px;z-index:999;min-width:180px;'; cm.style.left=Math.min(e.touches[0].clientX,window.innerWidth-200)+'px'; cm.style.top=Math.min(e.touches[0].clientY,window.innerHeight-200)+'px'; cm.innerHTML='<button onclick="renameFolder()">✏️ Переименовать</button><button onclick="togglePin()">'+(f.pinned?'📍 Открепить':'📌 Закрепить')+'</button><button onclick="setColor()">🎨 Метка</button><button onclick="delFolder()">🗑️ Удалить</button>'; document.body.appendChild(cm); cm.querySelectorAll('button').forEach(b=>b.onclick=()=>cm.remove()); setTimeout(()=>document.addEventListener('click',function h(){cm.remove();document.removeEventListener('click',h);}),100); } }, 600); } }
+  document.addEventListener('touchend', e => { if(longTimer) clearTimeout(longTimer); if(!ftEl) return; const dx=e.changedTouches[0].clientX-ftX, dy=e.changedTouches[0].clientY-ftY; if(Math.abs(dx)>80&&Math.abs(dx)>Math.abs(dy)){ const fn=ftEl.dataset.folder; if(dx<-50){ if(confirm('Удалить «'+fn+'»?')){delete appData.folders[fn];saveData(appData);renderFolders();} } else if(dx>50){ appData.folders[fn].pinned=!appData.folders[fn].pinned;saveData(appData);renderFolders(); } } ftEl=null; });
+  document.addEventListener('touchmove', () => { if(longTimer) clearTimeout(longTimer); });
 
-  // ============ LIGHTBOX & DRAWING ============
-  let lightboxIndex = -1; let drawTool = 'none'; let isDrawing = false; let drawStartX = 0, drawStartY = 0;
-  function openLightbox(i) { lightboxIndex = i; selectedScreenshotIndex = i; const sc = getCurrentScreenshots(); const src = typeof sc[i]==='string'?sc[i]:sc[i].src; document.getElementById('lightboxImg').src = src; document.getElementById('lightbox').classList.remove('hidden'); document.getElementById('lightboxCanvas').classList.add('active'); }
-  document.getElementById('closeLightbox').addEventListener('click', () => document.getElementById('lightbox').classList.add('hidden'));
-  document.getElementById('lightbox').addEventListener('click', e => { if (e.target === document.getElementById('lightbox') && drawTool==='none') document.getElementById('lightbox').classList.add('hidden'); });
-  const lc = document.getElementById('lightboxCanvas'), lctx = lc.getContext('2d');
-  function resizeCanvas() { const img = document.getElementById('lightboxImg'); lc.width = img.clientWidth || img.naturalWidth; lc.height = img.clientHeight || img.naturalHeight; }
-  function clearCanvas() { lctx.clearRect(0, 0, lc.width, lc.height); }
-  document.querySelectorAll('.draw-btn[data-tool]').forEach(b => b.addEventListener('click', () => { drawTool = b.dataset.tool; document.querySelectorAll('.draw-btn[data-tool]').forEach(x => x.classList.remove('active')); b.classList.add('active'); }));
-  document.getElementById('clearDrawing').addEventListener('click', clearCanvas);
-  document.getElementById('saveDrawing').addEventListener('click', () => { showToast(t('toastSaved')); });
-  lc.addEventListener('pointerdown', e => { if (drawTool==='none') return; isDrawing = true; drawStartX = e.offsetX; drawStartY = e.offsetY; });
-  lc.addEventListener('pointermove', e => { if (!isDrawing) return; clearCanvas(); lctx.beginPath(); lctx.strokeStyle = 'red'; lctx.lineWidth = 3; lctx.moveTo(drawStartX, drawStartY); lctx.lineTo(e.offsetX, e.offsetY); lctx.stroke(); if(drawTool==='circle'){lctx.beginPath();lctx.arc(drawStartX,drawStartY,Math.hypot(e.offsetX-drawStartX,e.offsetY-drawStartY),0,Math.PI*2);lctx.stroke();} });
-  lc.addEventListener('pointerup', () => { isDrawing = false; });
-  document.getElementById('lightboxImg').addEventListener('load', resizeCanvas);
+  function openFolder(n) { currentFolder=n; document.getElementById('folderTitle').textContent='📂 '+n; navigateTo('folder'); const car=document.getElementById('screenshotCarousel'); const sc=(appData.folders[n]?.screenshots)||[]; car.innerHTML=sc.length===0?'<p class="text-light text-center" style="width:100%;">Нет скриншотов</p>':sc.map((s,i)=>`<div style="position:relative;flex-shrink:0;"><img src="${typeof s==='string'?s:s.src}" onclick="openLightbox(${i})"><button style="position:absolute;top:-4px;right:-4px;background:var(--danger);color:white;border:none;border-radius:50%;width:22px;height:22px;font-size:10px;" onclick="event.stopPropagation();delScr(${i})">✕</button></div>`).join(''); }
+  function delScr(i) { appData.folders[currentFolder].screenshots.splice(i,1); saveData(appData); openFolder(currentFolder); }
+  document.getElementById('backFromFolder').addEventListener('click',()=>navigateTo('home'));
+  document.getElementById('addScreenshotBtn').addEventListener('click',()=>document.getElementById('screenshotInput').click());
+  document.getElementById('screenshotInput').addEventListener('change',e=>{Array.from(e.target.files).forEach(f=>{const r=new FileReader();r.onload=ev=>{appData.folders[currentFolder].screenshots.push(ev.target.result);saveData(appData);openFolder(currentFolder);};r.readAsDataURL(f);});e.target.value='';});
 
-  // ============ SEARCH & VOICE ============
-  function getInstructionsDB() { const base = { 'выписка': { detail: ['1. Нажмите «Счета» в меню.','2. Выберите нужный счёт.','3. Нажмите «Выписка».','4. Выберите период → «Сформировать».','5. Нажмите «Скачать».'], short: ['🏠 → 💰 Счета → 📄 Выписка → ⬇️ Скачать'] },
-    'справка': { detail: ['1. Перейдите в «Справки».','2. Выберите тип.','3. Заполните поля.','4. Нажмите «Запросить».','5. Скачайте.'], short: ['🏠 → 📋 Справки → Запросить'] },
-    'заявление': { detail: ['1. Откройте «Регистрация заявлений».','2. Нажмите «Новое заявление».','3. Выберите тип.','4. Заполните форму.','5. Нажмите «Отправить».'], short: ['🏠 → 📝 Заявления → Создать → Отправить'] } };
-    const custom = appData.customInstructions || {}; const merged = {...base}; Object.keys(custom).forEach(k => { merged[k] = { detail: custom[k], short: [custom[k][0]] }; }); return merged; }
-  function searchInstructions(query) { const db = getInstructionsDB(); const q = query.toLowerCase().trim(); for (const [k,v] of Object.entries(db)) { if (q.includes(k)||k.includes(q)) return {found:true,key:k,steps:v}; } return {found:false,key:query,steps:{detail:['1. Откройте нужный раздел в АИС ППС.','2. Найдите кнопку «'+query+'».','3. Следуйте указаниям системы.'],short:['🏠 → Найти раздел → Выполнить']}}; }
-  let lastSearchResult = null;
-  function showSearchResult(query) { const r = searchInstructions(query); lastSearchResult = r; const steps = searchMode==='short'?r.steps.short:r.steps.detail; document.getElementById('searchResultContainer').classList.remove('hidden'); document.getElementById('searchResult').innerHTML = '<strong>🟠 '+r.key+'</strong><br><br>'+steps.join('<br>'); document.getElementById('copyInstructionBtn').style.display='inline-block'; document.getElementById('favInstructionBtn').style.display='inline-block'; addToHistory(query); logOperation('search', query); document.getElementById('searchInput').value=''; }
-  function switchMode(m) { searchMode=m; localStorage.setItem('ais_pps_search_mode',m); document.getElementById('detailModeBtn').classList.toggle('active',m==='detail'); document.getElementById('shortModeBtn').classList.toggle('active',m==='short'); if (lastSearchResult) { const steps = m==='short'?lastSearchResult.steps.short:lastSearchResult.steps.detail; document.getElementById('searchResult').innerHTML = '<strong>🟠 '+lastSearchResult.key+'</strong><br><br>'+steps.join('<br>'); } }
-  document.getElementById('searchBtn').addEventListener('click', () => { const q=document.getElementById('searchInput').value.trim(); if(q)showSearchResult(q); });
-  document.getElementById('searchInput').addEventListener('keydown', e => { if(e.key==='Enter'){const q=document.getElementById('searchInput').value.trim();if(q)showSearchResult(q);} });
-  document.getElementById('copyInstructionBtn').addEventListener('click', () => { if(lastSearchResult){const steps=searchMode==='short'?lastSearchResult.steps.short:lastSearchResult.steps.detail; navigator.clipboard.writeText(steps.join('\n')).then(()=>showToast(t('toastCopied')));} });
-  document.getElementById('favInstructionBtn').addEventListener('click', () => { if(lastSearchResult&&!appData.favorites.includes(lastSearchResult.key)){appData.favorites.push(lastSearchResult.key);saveData(appData);renderFavorites();showToast('⭐ '+t('toastSaved'));} });
-  function renderFavorites() { const l=document.getElementById('favInstructionsList'); if(!appData.favorites.length){l.innerHTML='';return;} l.innerHTML=appData.favorites.map(f=>`<span class="tag" style="cursor:pointer;font-size:12px;" onclick="showSearchResult('${f}')">⭐ ${f}</span> `).join(''); }
+  let lightboxIndex=-1, drawTool='none', isDrawing=false, drawStartX=0, drawStartY=0;
+  function openLightbox(i) { lightboxIndex=i; const sc=appData.folders[currentFolder]?.screenshots||[]; const src=typeof sc[i]==='string'?sc[i]:sc[i].src; document.getElementById('lightboxImg').src=src; document.getElementById('lightbox').classList.remove('hidden'); document.getElementById('lightboxCanvas').classList.add('active'); resizeCanvas(); }
+  function resizeCanvas(){const img=document.getElementById('lightboxImg');const c=document.getElementById('lightboxCanvas');c.width=img.naturalWidth||800;c.height=img.naturalHeight||600;}
+  function clearCanvas(){document.getElementById('lightboxCanvas').getContext('2d').clearRect(0,0,9999,9999);}
+  document.getElementById('closeLightbox').addEventListener('click',()=>document.getElementById('lightbox').classList.add('hidden'));
+  document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===document.getElementById('lightbox')&&drawTool==='none')document.getElementById('lightbox').classList.add('hidden');});
+  document.querySelectorAll('.draw-btn[data-tool]').forEach(b=>b.addEventListener('click',()=>{drawTool=b.dataset.tool;document.querySelectorAll('.draw-btn[data-tool]').forEach(x=>x.classList.remove('active'));b.classList.add('active');}));
+  document.getElementById('clearDrawing').addEventListener('click',clearCanvas);
+  document.getElementById('saveDrawing').addEventListener('click',()=>{const dataUrl=document.getElementById('lightboxCanvas').toDataURL();appData.folders[currentFolder].screenshots[lightboxIndex]=dataUrl;saveData(appData);openFolder(currentFolder);showToast('💾 Сохранено!');});
+  const lc=document.getElementById('lightboxCanvas'),lctx=lc.getContext('2d');
+  lc.addEventListener('pointerdown',e=>{if(drawTool==='none')return;isDrawing=true;drawStartX=e.offsetX;drawStartY=e.offsetY;lctx.strokeStyle=drawTool==='circle'?'red':'yellow';lctx.lineWidth=3;lctx.beginPath();lctx.moveTo(drawStartX,drawStartY);});
+  lc.addEventListener('pointermove',e=>{if(!isDrawing)return;clearCanvas();lctx.beginPath();lctx.moveTo(drawStartX,drawStartY);lctx.lineTo(e.offsetX,e.offsetY);lctx.stroke();if(drawTool==='circle'){lctx.beginPath();lctx.arc(drawStartX,drawStartY,Math.hypot(e.offsetX-drawStartX,e.offsetY-drawStartY),0,Math.PI*2);lctx.stroke();}});
+  lc.addEventListener('pointerup',()=>{isDrawing=false;});
+  document.getElementById('lightboxImg').addEventListener('load',resizeCanvas);
 
-  // Voice
-  const vb=document.getElementById('voiceBtn'), vr=document.getElementById('voiceResult'); let rec=null, listening=false;
-  if ('webkitSpeechRecognition' in window||'SpeechRecognition' in window) { const SR=window.SpeechRecognition||window.webkitSpeechRecognition; rec=new SR(); rec.lang='ru-RU'; rec.interimResults=false; rec.maxAlternatives=1; rec.onresult=e=>{const t=e.results[0][0].transcript;vr.textContent='«'+t+'»';vb.classList.remove('listening');listening=false;showSearchResult(t);}; rec.onerror=()=>{vr.textContent='Ошибка';vb.classList.remove('listening');listening=false;}; rec.onend=()=>{vb.classList.remove('listening');listening=false;}; }
-  vb.addEventListener('click',()=>{if(!rec){showToast('Не поддерживается');return;}if(listening){rec.stop();vb.classList.remove('listening');listening=false;}else{rec.start();vb.classList.add('listening');vr.textContent='🎤 Слушаю...';listening=true;}});
+  const instructionsDB = {'выписка':'1. Счета\n2. Выбрать\n3. Выписка\n4. Период\n5. Скачать','справка':'1. Справки\n2. Тип\n3. Заполнить\n4. Запросить','заявление':'1. Заявления\n2. Новое\n3. Тип\n4. Заполнить\n5. Отправить'};
+  document.getElementById('searchBtn').addEventListener('click',()=>{const q=document.getElementById('searchInput').value.trim().toLowerCase();if(!q)return;let found=false;for(const[k,v]of Object.entries(instructionsDB)){if(q.includes(k)||k.includes(q)){document.getElementById('searchResultContainer').classList.remove('hidden');document.getElementById('searchResult').textContent='🟠 '+k+':\n\n'+v;appData.history.unshift({query:q,date:new Date().toISOString()});saveData(appData);found=true;break;}}if(!found){document.getElementById('searchResultContainer').classList.remove('hidden');document.getElementById('searchResult').textContent='❓ Не найдено';}});
 
-  // ============ HISTORY ============
-  function addToHistory(q) { appData.history.unshift({query:q,date:new Date().toLocaleDateString('ru-RU'),time:new Date().toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'})}); if(appData.history.length>50)appData.history=appData.history.slice(0,50); saveData(appData); }
-  function renderHistory() { const l=document.getElementById('historyList'); l.innerHTML=appData.history.length===0?'<p style="color:rgba(255,255,255,0.5);text-align:center;">'+t('empty')+'</p>':appData.history.map(e=>`<div class="folder-item" onclick="showSearchResult('${e.query.replace(/'/g,"\\'")}');navigateTo('home');"><span class="folder-icon">🕐</span><div class="folder-info"><div class="folder-name">${e.query}</div><div class="folder-count">${e.date} ${e.time}</div></div></div>`).join(''); }
-  document.getElementById('clearHistoryBtn').addEventListener('click',()=>{if(confirm('Очистить?')){appData.history=[];saveData(appData);renderHistory();showToast(t('toastDeleted'));}});
+  const vb=document.getElementById('voiceBtn');let rec=null,listening=false;
+  if('webkitSpeechRecognition' in window){rec=new webkitSpeechRecognition();rec.lang='ru-RU';rec.onresult=e=>{document.getElementById('searchInput').value=e.results[0][0].transcript;document.getElementById('searchBtn').click();vb.classList.remove('listening');};rec.onend=()=>vb.classList.remove('listening');}
+  vb.addEventListener('click',()=>{if(!rec)return;if(listening){rec.stop();vb.classList.remove('listening');}else{rec.start();vb.classList.add('listening');}listening=!listening;});
 
-  // ============ OCR ============
-  document.getElementById('ocrUploadArea').addEventListener('click',()=>document.getElementById('ocrInput').click());
-  document.getElementById('ocrInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{document.getElementById('ocrImage').src=ev.target.result;document.getElementById('ocrPreview').classList.remove('hidden');document.getElementById('ocrResult').classList.add('hidden');document.getElementById('ocrCopyBtn').classList.add('hidden');document.getElementById('ocrProgress').classList.add('hidden');};r.readAsDataURL(f);});
-  document.getElementById('ocrRecognizeBtn').addEventListener('click',async()=>{const img=document.getElementById('ocrImage');if(!img.src)return;const pd=document.getElementById('ocrProgress'),pf=document.getElementById('ocrProgressFill'),rd=document.getElementById('ocrResult'),cb=document.getElementById('ocrCopyBtn');pd.classList.remove('hidden');pf.style.width='0%';rd.classList.add('hidden');cb.classList.add('hidden');try{const w=await Tesseract.createWorker('rus+eng',1,{logger:m=>{if(m.status==='recognizing text')pf.style.width=Math.round(m.progress*100)+'%';}});const{data}=await w.recognize(img.src);await w.terminate();pf.style.width='100%';rd.textContent=data.text.trim()||'(не найдено)';rd.classList.remove('hidden');cb.classList.remove('hidden');playSound('success');}catch(err){rd.textContent='Ошибка: '+err.message;rd.classList.remove('hidden');}});
-  document.getElementById('ocrCopyBtn').addEventListener('click',()=>{navigator.clipboard.writeText(document.getElementById('ocrResult').textContent).then(()=>showToast(t('toastCopied')));});
+  function renderHistory(){const l=document.getElementById('historyList');l.innerHTML=appData.history.length===0?'<p class="text-light text-center">Пусто</p>':appData.history.map(h=>`<div class="folder-item"><span>🕐</span><span>${h.query} — ${new Date(h.date).toLocaleDateString('ru-RU')}</span></div>`).join('');}
+  document.getElementById('clearHistoryBtn').addEventListener('click',()=>{appData.history=[];saveData(appData);renderHistory();});
 
-  // ============ ENHANCE ============
+  document.getElementById('ocrGalleryBtn').addEventListener('click',()=>document.getElementById('ocrInput').click());
+  document.getElementById('ocrCameraBtn').addEventListener('click',()=>{const input=document.getElementById('ocrCameraInput');input.setAttribute('capture','environment');input.click();});
+  function handleOcrFile(file){if(!file)return;const r=new FileReader();r.onload=ev=>{document.getElementById('ocrImage').src=ev.target.result;document.getElementById('ocrPreview').classList.remove('hidden');document.getElementById('ocrResult').classList.add('hidden');document.getElementById('ocrCopyBtn').classList.add('hidden');};r.readAsDataURL(file);}
+  document.getElementById('ocrInput').addEventListener('change',e=>handleOcrFile(e.target.files[0]));
+  document.getElementById('ocrCameraInput').addEventListener('change',e=>handleOcrFile(e.target.files[0]));
+  document.getElementById('ocrRecognizeBtn').addEventListener('click',async()=>{const img=document.getElementById('ocrImage');if(!img.src)return;const rd=document.getElementById('ocrResult'),pd=document.getElementById('ocrProgress'),pf=document.getElementById('ocrProgressFill'),cb=document.getElementById('ocrCopyBtn');pd.classList.remove('hidden');pf.style.width='0%';rd.classList.add('hidden');cb.classList.add('hidden');try{const w=await Tesseract.createWorker('rus+eng',1,{logger:m=>{if(m.status==='recognizing text')pf.style.width=Math.round(m.progress*100)+'%';}});const{data}=await w.recognize(img.src);await w.terminate();pf.style.width='100%';rd.textContent=data.text.trim()||'(не найдено)';rd.classList.remove('hidden');cb.classList.remove('hidden');}catch(err){rd.textContent='Ошибка: '+err.message;rd.classList.remove('hidden');}});
+  document.getElementById('ocrCopyBtn').addEventListener('click',()=>{navigator.clipboard.writeText(document.getElementById('ocrResult').textContent).then(()=>showToast('📋 Скопировано!'));});
+
   let enhSrc=null;
   document.getElementById('enhanceUploadArea').addEventListener('click',()=>document.getElementById('enhanceInput').click());
-  document.getElementById('enhanceInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{enhSrc=ev.target.result;document.getElementById('enhanceOriginal').src=enhSrc;document.getElementById('enhancePreview').classList.remove('hidden');document.getElementById('enhanceResult').classList.add('hidden');document.getElementById('enhanceDownloadBtn').classList.add('hidden');};r.readAsDataURL(f);});
-  document.getElementById('enhanceBtn').addEventListener('click',()=>{if(!enhSrc)return;const c=document.createElement('canvas'),ctx=c.getContext('2d'),img=new Image();img.onload=()=>{c.width=img.width;c.height=img.height;ctx.drawImage(img,0,0);const id=ctx.getImageData(0,0,c.width,c.height),d=id.data;for(let i=0;i<d.length;i+=4){let g=0.299*d[i]+0.587*d[i+1]+0.114*d[i+2];g=(g-128)*1.8+128;if(g>160)g=255;else if(g<100)g=0;g=Math.max(0,Math.min(255,g));d[i]=d[i+1]=d[i+2]=g;}ctx.putImageData(id,0,0);const es=c.toDataURL('image/jpeg',0.95);document.getElementById('enhanceResult').src=es;document.getElementById('enhanceResult').classList.remove('hidden');document.getElementById('enhanceDownloadBtn').classList.remove('hidden');document.getElementById('enhanceDownloadBtn').onclick=()=>{const a=document.createElement('a');a.download='improved.jpg';a.href=es;a.click();};playSound('success');};img.src=enhSrc;});
+  document.getElementById('enhanceInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{enhSrc=ev.target.result;document.getElementById('enhanceOriginal').src=enhSrc;document.getElementById('enhancePreview').classList.remove('hidden');document.getElementById('enhanceResultBox').classList.add('hidden');};r.readAsDataURL(f);});
+  document.getElementById('enhanceBtn').addEventListener('click',()=>{if(!enhSrc)return;const c=document.createElement('canvas'),ctx=c.getContext('2d'),img=new Image();img.onload=()=>{c.width=img.width;c.height=img.height;ctx.drawImage(img,0,0);const id=ctx.getImageData(0,0,c.width,c.height),d=id.data;for(let i=0;i<d.length;i+=4){let g=0.299*d[i]+0.587*d[i+1]+0.114*d[i+2];g=(g-128)*1.8+128;if(g>160)g=255;else if(g<100)g=0;g=Math.max(0,Math.min(255,g));d[i]=d[i+1]=d[i+2]=g;}ctx.putImageData(id,0,0);document.getElementById('enhanceResultImg').src=c.toDataURL('image/jpeg',0.95);document.getElementById('enhanceResultBox').classList.remove('hidden');};img.src=enhSrc;});
 
-  // ============ BACKUP / RESTORE ============
-  document.getElementById('backupBtn').addEventListener('click',()=>{const bk={data:appData,password:appPassword,version:'3.2.1',date:new Date().toISOString()};const b=new Blob([JSON.stringify(bk,null,2)],{type:'application/json'});const a=document.createElement('a');a.download='backup_pps_'+new Date().toISOString().slice(0,10)+'.json';a.href=URL.createObjectURL(b);a.click();showToast(t('toastSaved'));playSound('success');});
+  document.getElementById('backupBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(appData)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='backup_guide.json';a.click();showToast('💾 Сохранено!');});
   document.getElementById('restoreBtn').addEventListener('click',()=>document.getElementById('restoreInput').click());
-  document.getElementById('restoreInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{try{const bk=JSON.parse(ev.target.result);if(bk.data&&bk.version){if(confirm('Восстановить?')){appData=bk.data;if(bk.password){appPassword=bk.password;localStorage.setItem(PASSWORD_KEY,appPassword);}saveData(appData);renderFolders();renderFavorites();showToast(t('toastRestored'));playSound('success');}}else showToast('Неверный формат');}catch(err){showToast('Ошибка');}};r.readAsText(f);e.target.value='';});
+  document.getElementById('restoreInput').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=ev=>{try{appData=JSON.parse(ev.target.result);saveData(appData);renderFolders();showToast('📥 Восстановлено!');}catch(err){showToast('Ошибка');}};r.readAsText(f);});
 
-  // ============ SETTINGS ============
-  document.getElementById('changeLockCard').addEventListener('click',()=>{showModal(`<h2>⏱ ${t('autoLock')}</h2><select id="lds">${[{v:0,l:'Никогда'},{v:1,l:'1 мин'},{v:3,l:'3 мин'},{v:5,l:'5 мин'},{v:10,l:'10 мин'},{v:15,l:'15 мин'},{v:30,l:'30 мин'}].map(o=>`<option value="${o.v}" ${lockDelay===o.v?'selected':''}>${o.l}</option>`).join('')}</select><div class="btn-row"><button class="btn btn-secondary" id="mc">${t('back')}</button><button class="btn btn-primary" id="md">${t('save')}</button></div>`); document.getElementById('mc').addEventListener('click',hideModal); document.getElementById('md').addEventListener('click',()=>{lockDelay=parseInt(document.getElementById('lds').value);localStorage.setItem('ais_pps_lock_delay',lockDelay);startAutoLock();hideModal();showToast(t('toastSaved'));});});
-  document.getElementById('changePasswordCard').addEventListener('click',()=>{showModal(`<h2>🔑 ${t('changePass')}</h2><input type="password" id="op" placeholder="Текущий"><input type="password" id="np" placeholder="Новый"><input type="password" id="cp" placeholder="Подтверждение"><div class="btn-row"><button class="btn btn-secondary" id="mc">${t('back')}</button><button class="btn btn-primary" id="md">${t('changePass')}</button></div>`); document.getElementById('mc').addEventListener('click',hideModal); document.getElementById('md').addEventListener('click',()=>{const o=document.getElementById('op').value.trim(),n=document.getElementById('np').value.trim(),c=document.getElementById('cp').value.trim();if(o!==appPassword){showToast('Неверный пароль');return;}if(!n){showToast('Введите новый');return;}if(n!==c){showToast('Не совпадают');return;}appPassword=n;localStorage.setItem(PASSWORD_KEY,n);hideModal();showToast(t('toastSaved'));});});
-  document.getElementById('fontSizeCard').addEventListener('click',()=>{showModal(`<h2>🔤 ${t('fontSize')}</h2><select id="fss">${[{v:'small',l:'Маленький'},{v:'medium',l:'Средний'},{v:'large',l:'Большой'}].map(o=>`<option value="${o.v}" ${fontSize===o.v?'selected':''}>${o.l}</option>`).join('')}</select><div class="btn-row"><button class="btn btn-secondary" id="mc">${t('back')}</button><button class="btn btn-primary" id="md">${t('save')}</button></div>`); document.getElementById('mc').addEventListener('click',hideModal); document.getElementById('md').addEventListener('click',()=>{fontSize=document.getElementById('fss').value;localStorage.setItem('ais_pps_font',fontSize);applyFontSize(fontSize);hideModal();showToast(t('toastSaved'));});});
-  document.getElementById('colorSchemeCard').addEventListener('click',()=>{showModal(`<h2>🌈 ${t('colorScheme')}</h2><label>Фон:</label><input type="color" id="clBg" value="${customColors.bg}"><label>Тёмный фон:</label><input type="color" id="clBgD" value="${customColors.bgDark}"><label>Акцент:</label><input type="color" id="clOr" value="${customColors.orange}"><div class="btn-row"><button class="btn btn-secondary" id="mc">${t('back')}</button><button class="btn btn-primary" id="md">${t('save')}</button></div>`); document.getElementById('mc').addEventListener('click',hideModal); document.getElementById('md').addEventListener('click',()=>{customColors={bg:document.getElementById('clBg').value,bgDark:document.getElementById('clBgD').value,orange:document.getElementById('clOr').value};localStorage.setItem('ais_pps_colors',JSON.stringify(customColors));applyColors();hideModal();showToast(t('toastSaved'));});});
-  document.getElementById('addInstructionCard').addEventListener('click',()=>{showModal(`<h2>📝 ${t('addInstr')}</h2><input id="in" placeholder="Название"><textarea id="is" rows="5" placeholder="Шаги"></textarea><div class="btn-row"><button class="btn btn-secondary" id="mc">${t('back')}</button><button class="btn btn-primary" id="md">${t('save')}</button></div>`); document.getElementById('mc').addEventListener('click',hideModal); document.getElementById('md').addEventListener('click',()=>{const n=document.getElementById('in').value.trim(),s=document.getElementById('is').value.trim();if(n&&s){appData.customInstructions[n]=s.split('\n').filter(x=>x.trim());saveData(appData);showToast(t('toastSaved'));}hideModal();});});
-  document.getElementById('autoBackupCard').addEventListener('click',()=>{const cur=appData.settings.autoBackup;showModal(`<h2>☁️ ${t('autoBackup')}</h2><p>${cur?'Включён (раз в неделю)':'Выключен'}</p><div class="btn-row"><button class="btn btn-${cur?'secondary':'primary'}" id="mc">${cur?'Выключить':'Включить'}</button><button class="btn btn-secondary" id="md">${t('back')}</button></div>`); document.getElementById('mc').addEventListener('click',()=>{appData.settings.autoBackup=!cur;saveData(appData);hideModal();showToast(appData.settings.autoBackup?'Включён!':'Выключен');}); document.getElementById('md').addEventListener('click',hideModal);});
+  document.getElementById('changeLockCard').addEventListener('click',()=>{const v=prompt('Автоблокировка (минут, 0 = никогда):',lockDelay);if(v!==null){lockDelay=parseInt(v)||0;localStorage.setItem('pps_new_lock',lockDelay);startAutoLock();showToast('✅ '+(lockDelay===0?'Выключена':lockDelay+' мин.'));}});
+  document.getElementById('changePasswordCard').addEventListener('click',()=>{const old=prompt('Текущий пароль:');if(old!==appPassword){showToast('❌ Неверный');return;}const np=prompt('Новый пароль:');if(np){appPassword=np;localStorage.setItem(PASSWORD_KEY,np);showToast('✅ Сменён!');}});
+  document.getElementById('fontSizeCard').addEventListener('click',()=>{const sizes=['small','medium','large'];const cur=localStorage.getItem('pps_new_font')||'medium';const next=sizes[(sizes.indexOf(cur)+1)%3];localStorage.setItem('pps_new_font',next);const s={small:{base:'12px',sm:'10px',lg:'14px'},medium:{base:'14px',sm:'12px',lg:'16px'},large:{base:'16px',sm:'14px',lg:'18px'}};document.documentElement.style.setProperty('--font-size',s[next].base);document.documentElement.style.setProperty('--font-size-sm',s[next].sm);document.documentElement.style.setProperty('--font-size-lg',s[next].lg);showToast('🔤 '+next);});
+  document.getElementById('colorSchemeCard').addEventListener('click',()=>{const bg=prompt('Цвет фона:','#5B0E8A');const tx=prompt('Цвет текста:','#FF8C00');if(bg)document.documentElement.style.setProperty('--bg',bg);if(tx){document.documentElement.style.setProperty('--orange',tx);}if(bg||tx)showToast('🌈 Обновлено!');});
 
-  // ============ PWA ============
-  let dp=null;
-  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;document.getElementById('installBanner').classList.remove('hidden');});
-  document.getElementById('installBtn').addEventListener('click',async()=>{if(dp){dp.prompt();const r=await dp.userChoice;if(r.outcome==='accepted'){document.getElementById('installBanner').classList.add('hidden');}dp=null;}});
-
-  // ============ INIT ============
-  function init() { renderFolders(); renderFavorites(); updateReportCounter(); switchLang(currentLang); }
+  function init(){const f=localStorage.getItem('pps_new_font')||'medium';const s={small:{base:'12px',sm:'10px',lg:'14px'},medium:{base:'14px',sm:'12px',lg:'16px'},large:{base:'16px',sm:'14px',lg:'18px'}};document.documentElement.style.setProperty('--font-size',s[f].base);document.documentElement.style.setProperty('--font-size-sm',s[f].sm);document.documentElement.style.setProperty('--font-size-lg',s[f].lg);renderFolders();}
   init();
-  console.log('✅ Гид по АИС ППС v3.2.1 — Исправлена загрузка фото! 🚀🟣🟠');
+  console.log('✅ НОВЫЙ Гид по АИС ППС — всё с нуля!');
 </script>
 </body>
 </html>
